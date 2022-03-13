@@ -1,7 +1,15 @@
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  mode: "jit",
+  content: ["./components/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        "dark": " #f2f2f2",
+      },
+      minWidth: {
+        "1/2": "50%",
+      },
+    },
   },
   plugins: [],
-}
+};
