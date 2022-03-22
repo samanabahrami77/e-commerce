@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "../Tools/Button";
 import { ImageButton } from "../Tools/ImageButton";
 import { Input } from "../Tools/Input";
-import { Svg } from "../Tools/Svg";
 
 export const Signup = () => {
   return (
@@ -17,9 +16,31 @@ export const Signup = () => {
           <i className="absolute top-1/2 transform -translate-y-1/2 z-0 right-0 w-full flex border-t border-gray-500 border-opacity-30"></i>
         </div>
         <Input data="email" />
-        <Input data="password" jsx={<Svg />} />
+        <Input
+          data="password"
+          jsx={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-gray-400 h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          }
+        />
         <Input data="re-password" />
-        <Button  />
+        <Button />
         <div className="">im not bot</div>
         <div className="text-center mt-6">
           already acount?{" "}

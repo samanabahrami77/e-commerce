@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "../Tools/Button";
 import { Input } from "../Tools/Input";
-import { Svg } from "../Tools/Svg";
 
 export const Signin = () => {
   const aLink = (
