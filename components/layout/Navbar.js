@@ -2,34 +2,35 @@ import { useEffect, useState } from "react";
 import { DropDown } from "./DropDown";
 
 export const Navbar = () => {
-  const [display, setdisplay] = useState("block");
+  const [display, setdisplay] = useState("flex");
   const [Isdown, setIsdown] = useState(false);
 
-  //// navbar hidden /////
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 50) {
-        setdisplay("hidden");
-      } else setdisplay("block");
-    });
-  }, [display]);
 
   useEffect(() => {
-    document.querySelector("#dropdownButton").addEventListener("mouseover", (e) => {
-      if (e.target) {
-        setIsdown(true);
-      }
-    });
+    document
+      .querySelector("#dropdownButton")
+      .addEventListener("mouseover", (e) => {
+        if (e.target) {
+          setIsdown(true);
+        }
+      });
 
     document.querySelector("#dropdown").addEventListener("mouseleave", (e) => {
       if (e.target) {
         setIsdown(false);
       }
     });
-  }, [Isdown]);
+
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 50 && !Isdown) {
+        setdisplay("hidden");
+      } else setdisplay("");
+    });
+
+  }, [display,Isdown]);
 
   return (
-    <div className={`bg-white h-20 w-full flex items-center px-8 ${display}`}>
+    <div className={`bg-white h-12 w-full items-center px-8 border-b-2 ${display}`}>
       <ul className="flex gap-14">
         <li>
           <button
@@ -54,7 +55,7 @@ export const Navbar = () => {
             }
             دسته بندی ها
           </button>
-          <div id="dropdown" className="absolute flex gap-2 bg-blue-400">
+          <div id="dropdown" className="absolute flex gap-2 bg-white z-10 mt-6 text-center rounded shadow-sm">
             {Isdown ? <DropDown /> : ""}
           </div>
         </li>

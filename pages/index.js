@@ -1,6 +1,7 @@
 import { Signin } from "../components/Auth/Signin";
 import { Signup } from "../components/Auth/Signup";
 import { Navbar } from "../components/layout/Navbar";
+import { Slider } from "../components/layout/Slider";
 import { TopNavbar } from "../components/layout/TopNavbar";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <div style={{ height: 1000 }} dir="rtl">
       <TopNavbar />
       <Navbar />
+      <Slider />
     </div>
   );
 }

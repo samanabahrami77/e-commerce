@@ -8,7 +8,7 @@ export const DropDown = () => {
   const menuDropdown = useRef();
 
   useEffect(() => {
-    menuDropdown.current.querySelectorAll("div").forEach((element) => {
+    menuDropdown.current.querySelectorAll("button").forEach((element) => {
       element.addEventListener("mouseover", (el) =>
         el.target ? setcategory(el.target.id) : setcategory("category1")
       );
@@ -19,17 +19,17 @@ export const DropDown = () => {
     <>
       <div
         ref={menuDropdown}
-        className="flex flex-col p-4 gap-2 text-xl border-l"
+        className="flex flex-col p-4 gap-2 text-xl border-l border-gray-400"
       >
-        <div className=" w-60" id="category1">
-          amir
-        </div>
-        <div className=" w-60" id="category2">
-          asgar
-        </div>
-        <div className=" w-60" id="category3">
-          akbar
-        </div>
+        <button className=" w-60 hover:text-orange-500" id="category1">
+          category1
+        </button>
+        <button className=" w-60 hover:text-orange-500" id="category2">
+          category2
+        </button>
+        <button className=" w-60 hover:text-orange-500" id="category3">
+          category3
+        </button>
       </div>
 
       {category === "category1" ? (

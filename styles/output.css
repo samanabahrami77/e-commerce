@@ -10,7 +10,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: iranYekan,monospace
+  font-family: iranYekan, monospace;
 }
 
 a {
@@ -20,6 +20,32 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+}
+
+.swiper-pagination-bullet
+ {
+  background-color: black !important
+}
+
+.swiper-pagination-bullet-active{
+  background-color: white !important
+}
+
+@media (max-width:650px) {
+  .swiper-button-next::after,
+  .swiper-button-prev::after  {
+    font-size: 1rem !important
+  }
+
+  .swiper-pagination-bullet{
+    width: 5px !important;
+    height: 5px !important
+  }
 }
 
 /*
@@ -513,6 +539,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   right: 0px;
 }
 
+.top-20 {
+  top: 5rem;
+}
+
 .top-0 {
   top: 0px;
 }
@@ -527,10 +557,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mt-6 {
   margin-top: 1.5rem;
-}
-
-.block {
-  display: block;
 }
 
 .flex {
@@ -549,12 +575,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 3.5rem;
 }
 
-.h-20 {
-  height: 5rem;
-}
-
 .h-12 {
   height: 3rem;
+}
+
+.h-20 {
+  height: 5rem;
 }
 
 .min-h-screen {
@@ -575,6 +601,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-5\/12 {
   width: 41.666667%;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .w-60 {
@@ -630,6 +660,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   gap: 0.25rem;
 }
 
+.gap-10 {
+  gap: 2.5rem;
+}
+
 .rounded-2xl {
   border-radius: 1rem;
 }
@@ -640,6 +674,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded {
+  border-radius: 0.25rem;
 }
 
 .border {
@@ -654,6 +692,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-top-width: 1px;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
 .border-l {
   border-left-width: 1px;
 }
@@ -665,6 +707,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .border-transparent {
   border-color: transparent;
+}
+
+.border-gray-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 
 .border-opacity-30 {
@@ -689,11 +736,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.bg-blue-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
 }
 
 .stroke-gray-400 {
