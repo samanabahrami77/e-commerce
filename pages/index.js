@@ -1,14 +1,12 @@
-import { Signin } from "../components/Auth/Signin";
-import { Signup } from "../components/Auth/Signup";
-import { Navbar } from "../components/layout/Navbar";
+import { Signin } from "./Auth/Signin";
+import { Signup } from "./Auth/Signup";
+import Header from "../components/layout/Header";
 import { Slider } from "../components/layout/Slider";
-import { TopNavbar } from "../components/layout/TopNavbar";
 
 export default function Home() {
   return (
     <div style={{ height: 1000 }} dir="rtl">
-      <TopNavbar />
-      <Navbar />
+      <Header />
       <Slider />
     </div>
   );

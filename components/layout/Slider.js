@@ -16,7 +16,7 @@ import "swiper/css/scrollbar";
 
 export const Slider = () => {
   return (
-    <div className="flex justify-center sticky top-20">
+    <div className="flex justify-center sticky top-20 md:mt-0 mt-4">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={50}
