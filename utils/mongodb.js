@@ -5,10 +5,13 @@ const ConnectDB = () => {
     return console.log("already connected.");
   }
   mongoose
-    .connect(process.env.MOBGODB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    .connect(
+      "mongodb+srv://amir:amious@cluster0.3ursu.mongodb.net/e-commerce?retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    )
     .then((res) => console.log("connected to mongodb."))
     .catch((err) => console.log(err));
 };
