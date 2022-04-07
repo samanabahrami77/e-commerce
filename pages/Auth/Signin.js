@@ -2,27 +2,38 @@ import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../../components/Tools/Button";
 import { ImageButton } from "../../components/Tools/ImageButton";
 import { Input } from "../../components/Tools/Input";
 
 import google from "../../images/google.png";
-import getUser from "../../Store/Actions/getUser";
+import { Auth, Notify } from "../../Store/Actions";
+import { validate } from "../../utils/validate";
 
 export default function Signin() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const dispatch = useDispatch();
+  const router = useRouter();
+
   console.log(useSelector((state) => state));
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email !== "" && password !== "") {
-      axios
-        .post("/api/signin", { email, password })
-        .then((res) => router.push("/"));
-      return dispatch(getUser({ email, password }));
+    if (email.length > 7 && password.length > 7) {
+      axios.post("/api/signin", { email, password }).then((res) => {
+        if (!res.data) {
+          dispatch(Notify("error", validate.USER_AUTH_ERROR));
+        } else {
+          dispatch(
+            Notify("success", email.split("@")[0] + validate.USER_AUTH_SUCCESS)
+          );
+          dispatch(Auth(res.data));
+          router.push("/");
+        }
+      });
     }
   };
 

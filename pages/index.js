@@ -5,9 +5,9 @@ import { Slider } from "../components/layout/Slider";
 
 export default function Home() {
   return (
-    <div style={{ height: 1000 }} dir="rtl">
+    <>
       <Header />
       <Slider />
-    </div>
+    </>
   );
 }

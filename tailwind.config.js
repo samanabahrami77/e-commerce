@@ -1,8 +1,14 @@
 module.exports = {
   mode: "jit",
-  content: ["./components/**/*.{html,js}","./pages/**/*.{html,js}"],
+  content: ["./components/**/*.{html,js}", "./pages/**/*.{html,js}"],
   theme: {
     extend: {
+      keyframes: {
+        wiggle: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
+      },
       backgroundColor: {
         dark: " #f2f2f2",
       },

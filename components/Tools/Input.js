@@ -26,6 +26,7 @@ export const Input = ({ data, jsx, aLink, label, value, onChange }) => {
             id={data}
             value={value}
             onChange={onChange}
+            required
           />
           <button onClick={handleShowPasword}>
             {!IshowPasword ? (
