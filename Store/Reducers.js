@@ -1,5 +1,10 @@
 export default (
-  state = { user: {}, massege: { status: "", massege: "" } },
+  state = {
+    user: {},
+    massege: { status: "", massege: "" },
+    product: {},
+    loading: false,
+  },
   action
 ) => {
   switch (action.type) {
@@ -13,6 +18,10 @@ export default (
           massege: action.payload.massege,
         },
       };
+    case "PRODUCT":
+      return { ...state, product: action.payload };
+    case "LOADING":
+      return { ...state, loading: !action.payload };
     default:
       return state;
   }

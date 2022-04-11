@@ -10,7 +10,7 @@ export const TopNavbar = () => {
 
   return (
     <>
-      <div className="flex flex-col sticky top-0 border-gray-300 shadow-md md:border-0 md:shadow-none border-b">
+      <div className="flex flex-col md:sticky top-0 border-gray-300 shadow-md md:border-0 md:shadow-none z-10 border-b">
         <div className="flex items-center bg-white h-20 w-full px-8">
           {/* mobile menu button */}
           <button

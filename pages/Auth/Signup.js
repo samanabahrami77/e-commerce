@@ -3,24 +3,32 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Button } from "../../components/Tools/Button";
 import { ImageButton } from "../../components/Tools/ImageButton";
 import { Input } from "../../components/Tools/Input";
 
 import google from "../../images/google.png";
+import { Notify } from "../../Store/Actions";
 
 export default function Signup() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [re_password, setRe_password] = useState("");
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email !== "" && password !== "") {
-      axios
-        .post("/api/signup", { email, password })
-        .then((res) => router.push("/Auth/Signin"));
+      axios.post("/api/signup", { email, password }).then((res) => {
+        if (res.data.error) {
+          dispatch(Notify("error", "ایمیل وجود داره"));
+        } else {
+          dispatch(Notify("success", "successed"));
+          router.push("/Auth/Signin");
+        }
+      });
     }
   };
 

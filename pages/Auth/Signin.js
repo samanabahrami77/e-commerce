@@ -9,7 +9,7 @@ import { ImageButton } from "../../components/Tools/ImageButton";
 import { Input } from "../../components/Tools/Input";
 
 import google from "../../images/google.png";
-import { Auth, Notify } from "../../Store/Actions";
+import { Auth, Loading, Notify } from "../../Store/Actions";
 import { validate } from "../../utils/validate";
 
 export default function Signin() {
@@ -22,8 +22,10 @@ export default function Signin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(Loading());
     if (email.length > 7 && password.length > 7) {
       axios.post("/api/signin", { email, password }).then((res) => {
+        dispatch(Loading());
         if (!res.data) {
           dispatch(Notify("error", validate.USER_AUTH_ERROR));
         } else {

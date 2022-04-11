@@ -1,12 +1,14 @@
+import { memo } from "react";
 import { Navbar } from "./Navbar";
 import { TopNavbar } from "./TopNavbar";
 
-export default function Header() {
-
+const Header = () => {
   return (
     <>
       <TopNavbar />
       <Navbar />
     </>
   );
-}
+};
+
+export default memo(Header);

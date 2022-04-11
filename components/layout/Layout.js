@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Loading } from "../loading";
 import { Toast } from "../Tools/Toast";
 
 export const Layout = ({ children }) => {
@@ -84,6 +85,7 @@ export const Layout = ({ children }) => {
           svg={svg.success}
         />
       )}
+      {/* <Loading /> */}
       <main>{children}</main>
     </div>
   );

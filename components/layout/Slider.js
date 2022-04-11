@@ -13,10 +13,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { memo } from "react";
 
-export const Slider = () => {
+const Slider = () => {
   return (
-    <div className="flex justify-center sticky top-20 md:mt-0 mt-4">
+    <div className="flex justify-center z-0 top-20 md:mt-0 mt-4">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={50}
@@ -44,3 +45,5 @@ export const Slider = () => {
     </div>
   );
 };
+
+export default memo(Slider);

@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ["dkstatics-public.digikala.com"],
+  },
   env: {
     MONGODB_URL:
       "mongodb+srv://amir:amious@cluster0.3ursu.mongodb.net/e-commerce?retryWrites=true&w=majority",
