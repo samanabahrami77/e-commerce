@@ -4,7 +4,7 @@ import Filter from "./Filter";
 
 export const Items = () => {
   return (
-    <div className="flex justify-center md:p-16">
+    <div className="flex justify-center md:p-16 p-2">
       <div className="xl:flex hidden xl:w-1/4">
         <Filter />
       </div>

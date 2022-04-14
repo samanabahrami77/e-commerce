@@ -6,7 +6,7 @@ const Filter = () => {
       className="flex flex-col gap-4 border w-full ml-4 rounded-md p-6 text-gray-700
     text-lg"
     >
-      <h1 className="text-2xl ">فیلتر ها</h1>
+      <h1 className="text-2xl ">فیلترها</h1>
       <div>برند</div>
       <svg direction={"rtl"}
         xmlns="http://www.w3.org/2000/svg"

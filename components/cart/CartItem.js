@@ -6,6 +6,17 @@ import { Loading } from "../loading";
 
 export const CartItem = () => {
   const { product } = useSelector((state) => state);
+  
+  const whiteSpace = (title) => {
+    let str = "";
+    for (let index = 0; index < title.length; index++) {
+      if (index < 50) {
+        str += title[index];
+      } else return (str += "...");
+    }
+    return str;
+  };
+
   return (
     <>
       {product.product ? (
@@ -28,11 +39,8 @@ export const CartItem = () => {
               {/* bodyCart */}
               <div className="flex flex-col gap-4 sm:w-full w-2/3">
                 {/* titleCart */}
-                <div
-                  className="sm:h-10 text-xs sm:text-sm sm:overflow-hidden
-                 text-ellipsis sm:whitespace-nowrap p-2"
-                >
-                  <span>{item.title_fa}</span>
+                <div className="text-xs sm:text-sm p-2">
+                  <span>{whiteSpace(item.title_fa)}</span>
                 </div>
                 {/* rate */}
                 <div className="flex gap-1">
