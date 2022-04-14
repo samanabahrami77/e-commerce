@@ -3,6 +3,13 @@ module.exports = {
   content: ["./components/**/*.{html,js}", "./pages/**/*.{html,js}"],
   theme: {
     extend: {
+      screens: {
+        custom: { min: "300px", max: "640px" },
+      },
+      colors: { primary: "#ff5c39" },
+      boxShadow: {
+        custom: "0px 0px 10px 2px #e3e0e0",
+      },
       keyframes: {
         wiggle: {
           "0%": { transform: "translateX(100%)" },

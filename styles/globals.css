@@ -1,14 +1,13 @@
 @font-face {
   font-family: iranYekan;
-  src: url(./Yekan.woff2);
-  font-display: fallback;
+  src: url(./iranyekan.woff);
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: iranYekan, monospace;
+  font-family: iranYekan;
 }
 
 a {
