@@ -27,7 +27,7 @@ export const Navbar = () => {
           <li>
             <button
               id="dropdownButton"
-              className="flex gap-1 text hover:text-orange-500"
+              className="flex gap-1 hover:text-orange-500"
             >
               {
                 <svg
@@ -48,8 +48,8 @@ export const Navbar = () => {
               دسته بندی ها
             </button>
             <div
+              className="absolute flex gap-2 bg-white z-10 mt-6 rounded shadow-sm"
               id="dropdown"
-              className="absolute flex gap-2 bg-white z-10 mt-6 text-center rounded shadow-sm"
             >
               {Isdown ? <DropDown /> : ""}
             </div>

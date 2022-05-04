@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
 import PersianNumber from "../../Hooks/PersianNumber";
@@ -6,7 +7,7 @@ import { Loading } from "../loading";
 
 export const CartItem = () => {
   const { product } = useSelector((state) => state);
-  
+
   const whiteSpace = (title) => {
     let str = "";
     for (let index = 0; index < title.length; index++) {
@@ -28,14 +29,17 @@ export const CartItem = () => {
               key={item.id}
             >
               {/* cartImage */}
-              <div className="sm:w-4/5 w-1/3 mr-4">
-                <Image
-                  src={item.images.url[0]}
-                  width="100%"
-                  height="100%"
-                  layout="responsive"
-                />
-              </div>
+              <Link href={`./product/${item.id}`}>
+                <div className="sm:w-4/5 w-1/3 mr-4">
+                  <Image
+                    src={item.images.url[0]}
+                    width="100%"
+                    height="100%"
+                    layout="responsive"
+                    priority="preload"
+                  />
+                </div>
+              </Link>
               {/* bodyCart */}
               <div className="flex flex-col gap-4 sm:w-full w-2/3">
                 {/* titleCart */}

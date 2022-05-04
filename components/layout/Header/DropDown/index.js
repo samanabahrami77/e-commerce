@@ -19,16 +19,16 @@ export const DropDown = () => {
     <>
       <div
         ref={menuDropdown}
-        className="flex flex-col p-4 gap-2 text-xl border-l border-gray-400"
+        className="flex flex-col p-6 gap-6 text-lg border-l border-gray-400"
       >
-        <button className=" w-60 hover:text-orange-500" id="category1">
-          category1
+        <button className=" w-60 hover:text-orange-500 text-right" id="category1">
+          لوازم جانبی موبایل
         </button>
-        <button className=" w-60 hover:text-orange-500" id="category2">
-          category2
+        <button className=" w-60 hover:text-orange-500 text-right" id="category2">
+          گوشی موبایل و لپ تاپ
         </button>
-        <button className=" w-60 hover:text-orange-500" id="category3">
-          category3
+        <button className=" w-60 hover:text-orange-500 text-right" id="category3">
+        سایر ...
         </button>
       </div>
 

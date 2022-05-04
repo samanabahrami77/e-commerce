@@ -9,6 +9,7 @@ module.exports = {
       colors: { primary: "#ff5c39" },
       boxShadow: {
         custom: "0px 0px 10px 2px #e3e0e0",
+        imgbtn: "0px 0px 1px .5px #e3e0e0",
       },
       keyframes: {
         wiggle: {

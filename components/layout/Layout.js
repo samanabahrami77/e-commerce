@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Loading } from "../loading";
 import { Toast } from "../Tools/Toast";
+import Header from "./Header";
 
 export const Layout = ({ children }) => {
   const [IsShow, setIsShow] = useState(false);
@@ -65,6 +66,7 @@ export const Layout = ({ children }) => {
 
   return (
     <div dir="rtl">
+      <Header />
       {massege.status === "error" && IsShow && (
         <Toast
           msg={massege.massege}
