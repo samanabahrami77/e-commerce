@@ -1,3 +1,3 @@
 ## DEMO
 
-[click](https://e-commerce-digi.vercel.app/)
+[show](https://e-commerce-digi.vercel.app/)
