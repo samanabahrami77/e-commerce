@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Loading } from "../loading";
 import { Toast } from "../Tools/Toast";
+import { Footer } from "./Footer";
 import Header from "./Header";
 
 export const Layout = ({ children }) => {
@@ -89,6 +90,7 @@ export const Layout = ({ children }) => {
       )}
       {/* <Loading /> */}
       <main>{children}</main>
+      <Footer />
     </div>
   );
 };

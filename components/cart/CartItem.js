@@ -25,7 +25,7 @@ export const CartItem = () => {
           {product.product.map((item) => (
             <div
               className="flex sm:flex-col gap-8 cursor-pointer items-center shadow-gray-700
-                border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative "
+                  border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative "
               key={item.id}
             >
               {/* cartImage */}
@@ -36,7 +36,7 @@ export const CartItem = () => {
                     width="100%"
                     height="100%"
                     layout="responsive"
-                    priority="preload"
+                    loading="lazy"
                   />
                 </div>
               </Link>
@@ -65,7 +65,7 @@ export const CartItem = () => {
                 <div className="flex w-full justify-between text-sm">
                   <button
                     className="flex justify-center items-center bg-primary text-white rounded p-1 hover:text-primary
-                  hover:bg-white hover:border h-6 w-6 border-primary"
+                    hover:bg-white hover:border h-6 w-6 border-primary"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,9 @@ export const CartItem = () => {
           ))}
         </>
       ) : (
-        "Loading..."
+        <div className="flex w-screen absolute left-0 h-screen">
+          <Loading />
+        </div>
       )}
     </>
   );

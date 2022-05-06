@@ -81,7 +81,7 @@ export const TopNavbar = () => {
                 سبد خرید
               </label>
             </button>
-            <Link href={"./Auth/Signin"}>
+            <Link href={"/Auth/Signin"}>
               <button className="flex flex-col items-center text-gray-600 gap-1 text-base">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
