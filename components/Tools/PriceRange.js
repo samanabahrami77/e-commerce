@@ -21,7 +21,6 @@ export const PriceRange = () => {
 
   return (
     <>
-      <h3 className="border-b border-t py-4">محدوده قیمت</h3>
       <div className="flex items-center">
         <span className="text-base">از</span>
         <input

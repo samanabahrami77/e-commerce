@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Loading } from "../loading";
 import { Toast } from "../Tools/Toast";
 import { Footer } from "./Footer";
-import Header from "./Header";
+import { Navbar } from "./Navbar";
 
 export const Layout = ({ children }) => {
   const [IsShow, setIsShow] = useState(false);
@@ -66,8 +65,8 @@ export const Layout = ({ children }) => {
   const handelShow = () => setIsShow(!IsShow);
 
   return (
-    <div dir="rtl">
-      <Header />
+    <div dir="rtl" className="bg-gray-100">
+      <Navbar />
       {massege.status === "error" && IsShow && (
         <Toast
           msg={massege.massege}
@@ -88,7 +87,6 @@ export const Layout = ({ children }) => {
           svg={svg.success}
         />
       )}
-      {/* <Loading /> */}
       <main>{children}</main>
       <Footer />
     </div>

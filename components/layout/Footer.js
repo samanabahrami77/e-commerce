@@ -12,45 +12,45 @@ import twitter from "./../../images/twitter.png";
 
 export const Footer = () => {
   return (
-    <div className="flex flex-col border-t h-50 p-6 gap-12">
+    <div className="flex flex-col h-50 p-6 gap-12 md:mx-14 bg-white md:rounded-md">
       {/* top footer */}
-      <div className="flex flex-wrap">
-        <div className="flex flex-col items-center w-1/5 text-xs text-gray-700 gap-2">
-          <span className="w-16 h-16">
+      <div className="flex flex-wrap justify-between md:mx-10 md:gap-0 gap-2">
+        <div className="flex flex-col items-center text-xs text-gray-700 gap-2">
+          <span className="md:w-16 w-12 h-12 md:h-16">
             <Image src={originalProducts} width="100%" height="100%" />
           </span>
-          <span>ضمانت اصل بودن کالا</span>
+          <span className="md:text-sm text-xs">ضمانت اصل بودن کالا</span>
         </div>
-        <div className="flex flex-col items-center w-1/5 text-xs text-gray-700 gap-2">
-          <span className="w-16 h-16">
+        <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
+          <span className="md:w-16 w-12 h-12 md:h-16">
             <Image src={daysReturn} width="100%" height="100%" />
           </span>
-          <span>هفت روز ضمانت بازگشت کالا</span>
+          <span className="md:text-sm text-xs"> ضمانت بازگشت کالا</span>
         </div>
-        <div className="flex flex-col items-center w-1/5 text-xs text-gray-700 gap-2">
-          <span className="w-16 h-16">
+        <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
+          <span className="md:w-16 w-12 h-12 md:h-16">
             <Image src={support} width="100%" height="100%" />
           </span>
-          <span>۷ روز ﻫﻔﺘﻪ، ۲۴ ﺳﺎﻋﺘﻪ</span>
+          <span>پشتیبانی ۲۴ ﺳﺎﻋﺘﻪ</span>
         </div>
-        <div className="flex flex-col items-center w-1/5 text-xs text-gray-700 gap-2">
-          <span className="w-16 h-16">
+        <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
+          <span className="md:w-16 w-12 h-12 md:h-16">
             <Image src={cashOnDelivery} width="100%" height="100%" />
           </span>
           <span>امکان پرداخت در محل</span>
         </div>
-        <div className="flex flex-col items-center w-1/5 text-xs text-gray-700 gap-2">
-          <span className="w-16 h-16">
+        <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
+          <span className="md:w-16 w-12 h-12 md:h-16">
             <Image src={expressDelivery} width="100%" height="100%" />
           </span>
           <span>اﻣﮑﺎن ﺗﺤﻮﯾﻞ اﮐﺴﭙﺮس</span>
         </div>
       </div>
       {/* bottom footer */}
-      <div className="flex text-gray-800">
-        <div className="flex flex-col w-1/4">
+      <div className="flex text-gray-800 flex-wrap justify-between">
+        <div className="flex flex-col ">
           <h3 className="text-lg mb-4">با فروشگاه</h3>
-          <ul className="text-gray-500 text-[1.4rem]">
+          <ul className="text-gray-500">
             <li className="py-2">اتاق خبر فروشگاه</li>
             <li className="py-2">فروش در فروشگاه</li>
             <li className="py-2">فرصت های شغلی </li>
@@ -58,7 +58,7 @@ export const Footer = () => {
             <li className="py-2">درباره فروشگاه</li>
           </ul>
         </div>
-        <div className="flex flex-col w-1/4">
+        <div className="flex flex-col ">
           <h3 className="text-lg mb-4">خدمات مشتریان</h3>
           <ul className="text-gray-500 text-base">
             <li className="py-2">پاسخ به پرسش های متداول</li>
@@ -68,7 +68,7 @@ export const Footer = () => {
             <li className="py-2"> گزارش باگ </li>
           </ul>
         </div>
-        <div className="flex flex-col w-1/4">
+        <div className="flex flex-col ">
           <h3 className="text-lg mb-4">راهنمای خرید از فروشگاه</h3>
           <ul className="text-gray-500 text-base">
             <li className="py-2">نحوه ثبت سفارش</li>
@@ -76,31 +76,31 @@ export const Footer = () => {
             <li className="py-2">شیوه های پرداخت</li>
           </ul>
         </div>
-        <div className="flex flex-col w-1/4 justify-between">
-          <h3>همراه ما باشید !</h3>
+        <div className="flex flex-col justify-between">
+          <h3 className="md:py-0 py-4">همراه ما باشید !</h3>
           <div className="flex justify-between pl-12">
-            <span className="w-10 h-10">
+            <button className="w-10 h-10">
               <Image src={aparat} />
-            </span>
-            <span className="w-10 h-10">
+            </button>
+            <button className="w-10 h-10">
               <Image src={linkedin} />
-            </span>
-            <span className="w-10 h-10">
+            </button>
+            <button className="w-10 h-10">
               <Image src={instagram} />
-            </span>
-            <span className="w-10 h-10">
+            </button>
+            <button className="w-10 h-10">
               <Image src={twitter} />
-            </span>
+            </button>
           </div>
           <div className="flex flex-col gap-4">
-            <h4>با ثبت ایمیل ، از جدیدترین تخفیف ها خبردار شوید</h4>
+            <h4 className="mt-6">با ثبت ایمیل ، از جدیدترین تخفیف ها خبردار شوید</h4>
             <div className="flex gap-2">
               <input
                 type="email"
                 className="outline-none p-3 w-3/4  rounded-md bg-gray-100 text-sm"
                 placeholder="ایمیل شما"
               />
-              <button className="bg-gray-300 rounded-md p-4 w-1/4 text-sm text-white">
+              <button className="bg-orange-400 rounded-md p-4 w-1/4 text-sm text-white">
                 ثبت
               </button>
             </div>
@@ -108,11 +108,8 @@ export const Footer = () => {
         </div>
       </div>
       <div className="text-center text-sm text-gray-600">
-        <hr className="pb-6"/>
-        <span>
-          برای استفاده از مطالب فروشگاه، داشتن «هدف غیرتجاری» و ذکر «منبع»
-          کافیست. تمام حقوق اين وب‌سايت نیز برای شرکت (فروشگاه آنلاین ) است.
-        </span>
+        <hr className="pb-6" />
+        <span>همه‌ حقوق برای «فروشگاه» است. © 1401</span>
       </div>
     </div>
   );

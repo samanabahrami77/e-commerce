@@ -1,10 +1,8 @@
-import Header from "../components/layout/Header";
-import Slider from "../components/layout/Slider";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { Product } from "../Store/Actions";
 import { useEffect } from "react";
-import { Items } from "../components/cart/Items";
+import { Products } from "../components/Products";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -15,9 +13,8 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <Slider />
-      <Items />
-    </>
+    <div className="bg-gray-100">
+      <Products />
+    </div>
   );
 }

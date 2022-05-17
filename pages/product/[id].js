@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { ColorProducts } from "../../components/Tools/ColorProducts";
 import PersianNumber from "../../Hooks/PersianNumber";
 import truck from "./../../images/truck.png";
-import store from "./../../images/store.png";
 
 const Product = () => {
   const router = useRouter();
@@ -24,16 +23,33 @@ const Product = () => {
   return (
     <div className="mt-4">
       {data ? (
-        <div className="flex flex-col px-8 gap-8">
-          <div className="flex text-gray-500 text-sm gap-6">
-            <Link href={"/"}>فروشگاه</Link>
-            <span>/</span>
+        <div className="flex flex-col px-8 gap-4">
+          <div className="flex text-gray-500 text-sm gap-2 bg-white p-4 rounded-md">
+            <Link href={"/"}>
+              <button className="text-orange-500">فروشگاه</button>
+            </Link>
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </span>
             <Link href={"#"}>{data.data_layer.category}</Link>{" "}
           </div>
-          <div className="flex w-full gap-4">
+          <div className="flex w-full gap-4 mb-8">
             <div className="flex flex-col w-2/3 gap-4">
-              <div className="flex">
-                <div className="flex flex-col w-1/3 md:h-[50vh]">
+              <div className="flex bg-white p-4 rounded-md">
+                <div className="flex flex-col w-1/3">
                   <span className="md:max-w-[24vw]">
                     <Image
                       priority={data.id == id}
@@ -44,13 +60,10 @@ const Product = () => {
                     />
                   </span>
                 </div>
-                <div className="flex flex-col w-2/3 gap-4">
-                  <div className="flex text-blue-400 text-sm font-bold gap-2">
-                    <span>{data.data_layer.brand}</span>
-                    <span>/</span>
-                    <span>{data.data_layer.category}</span>
-                  </div>
-                  <span className="break-words">{data.title_fa}</span>
+                <div className="flex flex-col w-2/3">
+                  <span className="break-words lg:text-xl text-sm">
+                    {data.title_fa}
+                  </span>
                   <div className="flex">
                     <div className="flex flex-col w-full">
                       <hr className="my-6" />
@@ -111,13 +124,12 @@ const Product = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex">
-                <div className="flex flex-col w-full">
-                  <hr className="bg-gray-200 h-2 rounded my-6" />
-                  <h3 className="border-b-2 py-2 max-w-fit border-red-600 mb-6">
+              <div className="flex bg-white p-4">
+                <div className="flex flex-col w-full gap-4">
+                  <h3 className="border-b-2 max-w-fit border-red-600 mb-6">
                     تجربه های خریداران
                   </h3>
-                  <div className="flex flex-col gap-4 mt-4">
+                  <div className="flex flex-col gap-4">
                     <div className="pl-4">
                       <div className="flex justify-between">
                         <div className="flex gap-4 items-center">
@@ -162,9 +174,9 @@ const Product = () => {
                         </svg>{" "}
                       </div>
                     </div>
-                    <hr className="py-4" />
                   </div>
-                  <div className="flex flex-col gap-4 mt-4">
+                  <hr />
+                  <div className="flex flex-col gap-4">
                     <div className="pl-4">
                       <div className="flex justify-between">
                         <div className="flex gap-4 items-center">
@@ -209,68 +221,30 @@ const Product = () => {
                         </svg>{" "}
                       </div>
                     </div>
-                    <hr className="py-4" />
-                  </div>{" "}
-                  <div className="flex flex-col gap-4 mt-4">
-                    <div className="pl-4">
-                      <div className="flex justify-between">
-                        <div className="flex gap-4 items-center">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-8 w-8 stroke-slate-700"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                          </svg>
-                          <span>فروشگاه</span>
-                        </div>
-                        <span className="text-gray-500 text-sm">
-                          ۷ اردیبهشت ۱۴۰۱
-                        </span>
-                      </div>
-                      <p className="mt-6 pr-8 text-gray-600 text-sm">
-                        خیلی عالیست
-                      </p>
-                      <div className="flex justify-end text-gray-600 gap-2">
-                        <span>آیا این نظر مفید بود ؟</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 cursor-pointer"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
-                          />
-                        </svg>{" "}
-                      </div>
-                    </div>
-                    <hr className="py-4" />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col w-1/3 my-2 h-fit bg-gray-100 border rounded sticky top-36 p-6 mb-10">
+            <div className="flex flex-col w-1/3 h-fit bg-white rounded sticky top-36 p-6 mb-10">
               <div className="flex flex-col gap-4">
-                <h4>فروشنده</h4>
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center">
                   <span className="w-10 h-10">
-                    <Image src={store} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-8 w-8 text-orange-600"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
                   </span>
                   <span>فروشگاه</span>
                 </div>
-                <div className="flex gap-1 text-xs px-12">
+                <div className="flex gap-1 text-xs px-10">
                   <span> عملکرد </span>
                   <span className="text-green-500">عالی</span>
                 </div>
@@ -330,8 +304,8 @@ const Product = () => {
                   <span className="text-red-500 text-sm">
                     تنها 1 عدد در انبار فروشگاه مانده
                   </span>
-                  <button className="bg-red-500 p-3 text-white rounded-md text-sm">
-                    افزودن به سبد
+                  <button className="bg-orange-500 p-3 text-white rounded-md text-sm">
+                    اضافه به سبد خرید
                   </button>
                 </div>
               </div>
