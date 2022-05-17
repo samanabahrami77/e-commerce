@@ -96,7 +96,6 @@ export default function Signup() {
             />
             <Button value={"ثبت نام"} />
           </form>
-          <div className="">im not bot</div>
         </div>
       </main>
     </>

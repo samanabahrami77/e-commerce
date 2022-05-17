@@ -93,7 +93,8 @@ const Filter = () => {
 
       <h1 className="text-2xl text-orange-600 mt-6">فیلتر</h1>
       <button
-        className="flex justify-between text-gray-400 focus:text-gray-700 hover:bg-gray-50 rounded-md"
+        className="flex justify-between text-gray-400 focus:text-gray-700 hover:bg-gray-50
+         rounded-md"
         onClick={handelShowBrand}
       >
         <span className="flex gap-2 relative">
@@ -149,8 +150,7 @@ const Filter = () => {
         style={{ display: displayBrand }}
       >
         <li className="flex items-center gap-6 border-b p-2">
-          <input type="checkbox" name="" id="" className="scale-150" />{" "}
-          <span>اپل</span>
+          <input type="checkbox" className="scale-150" /> <span>اپل</span>
         </li>
         <li className="flex items-center gap-6 border-b p-2">
           <input type="checkbox" name="" id="" className="scale-150" />{" "}

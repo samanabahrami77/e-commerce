@@ -101,7 +101,6 @@ export default function Signin() {
               aLink={aLink}
               label="پسورد"
             />
-            <div className="">im not bot</div>
             <Button value={"ورود"} />
           </form>
           <div className="text-center mt-6 text-gray-700">

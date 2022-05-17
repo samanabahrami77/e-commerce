@@ -46,8 +46,8 @@ const Product = () => {
             </span>
             <Link href={"#"}>{data.data_layer.category}</Link>{" "}
           </div>
-          <div className="flex w-full gap-4 mb-8">
-            <div className="flex flex-col w-2/3 gap-4">
+          <div className="flex w-full gap-4 mb-8 md:flex-nowrap flex-wrap">
+            <div className="flex flex-col md:w-2/3 w-full gap-4">
               <div className="flex bg-white p-4 rounded-md">
                 <div className="flex flex-col w-1/3">
                   <span className="md:max-w-[24vw]">
@@ -225,7 +225,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col w-1/3 h-fit bg-white rounded sticky top-36 p-6 mb-10">
+            <div className="flex flex-col md:w-1/3 w-full h-fit bg-white rounded sticky top-36 p-6 mb-10">
               <div className="flex flex-col gap-4">
                 <div className="flex items-center">
                   <span className="w-10 h-10">
@@ -313,7 +313,7 @@ const Product = () => {
           </div>
         </div>
       ) : (
-        "loading..."
+       <div className="h-[50vh] animate-pulse"></div>
       )}
     </div>
   );
