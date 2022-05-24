@@ -52,14 +52,14 @@ export default function Signin() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <main
-        className="bg-dark min-h-screen  flex flex-col gap-8 justify-center items-center"
-        dir="rtl"
+        className="bg-dark min-h-screen  flex flex-col gap-8 justify-center
+        items-center md:text-base text-sm"
       >
         <Link href={"/"}>
           <h1 className="text-2xl cursor-pointer">فروشگاه</h1>
         </Link>
         <div className="bg-white shadow-sm rounded-2xl py-6 px-12 flex flex-col w-11/12 md:w-[32rem] gap-4">
-          <h1 className="text-2xl text-center text-gray-500">ورود</h1>
+          <h1 className="md:text-2xl text-lg text-center text-gray-500">ورود</h1>
           <ImageButton src={google} value="ورود با گوگل" />
           <div className="relative flex justify-center">
             <h3 className="text-xs text-gray-400 z-10 relative  bg-white px-3">

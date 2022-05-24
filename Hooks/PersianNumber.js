@@ -34,7 +34,8 @@ export default function PersianNumber(num) {
       case "9":
         arr[index] = "۹";
       default:
-        break
+        arr;
+        break;
     }
   }
   let count = 0;

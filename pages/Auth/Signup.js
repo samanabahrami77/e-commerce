@@ -47,7 +47,7 @@ export default function Signup() {
         </Link>
 
         <div className="bg-white shadow-sm rounded-2xl py-6 px-12 flex flex-col md:m-0 mx-4 w-full md:w-[32rem] gap-4">
-          <h1 className="text-2xl text-center text-gray-500">ثبت نام</h1>
+          <h1 className="md:text-2xl text-lg text-center text-gray-500">ثبت نام</h1>
           <ImageButton src={google} value="ثبت نام با گوگل" />
           <div className="relative flex justify-center">
             <h3 className="text-xs text-gray-500 z-10 relative bg-white px-3">
@@ -55,7 +55,7 @@ export default function Signup() {
             </h3>
             <i className="absolute top-1/2 transform -translate-y-1/2 z-0 right-0 w-full flex border-t border-gray-500 border-opacity-30"></i>
           </div>
-          <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+          <form className="flex flex-col gap-8 md:text-base text-sm" onSubmit={handleSubmit}>
             <Input
               data="email"
               label={"ایمیل"}

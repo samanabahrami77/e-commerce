@@ -1,9 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useDispatch } from "react-redux";
 import PersianNumber from "../../Hooks/PersianNumber";
+import { AddToCart } from "../../Store/Actions";
 
 export const ProductItem = ({ product }) => {
+  const dispach = useDispatch();
+
   const whiteSpace = (title) => {
     let str = "";
     for (let index = 0; index < title.length; index++) {
@@ -35,7 +39,7 @@ export const ProductItem = ({ product }) => {
           {/* bodyCart */}
           <div className="flex flex-col gap-4 sm:w-full w-2/3">
             {/* titleCart */}
-            <div className="text-xs sm:text-sm p-2 h-20">
+            <div className="text-xs sm:text-sm p-2 h-20 leading-5">
               <span>{whiteSpace(product.title_fa)}</span>
             </div>
             {/* rate */}
@@ -58,6 +62,7 @@ export const ProductItem = ({ product }) => {
               <button
                 className="flex justify-center items-center bg-primary text-white rounded p-1 hover:text-primary
                     hover:bg-white hover:border h-6 w-6 border-primary"
+                onClick={() => dispach(AddToCart(product))}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

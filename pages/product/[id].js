@@ -3,12 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { ColorProducts } from "../../components/Tools/ColorProducts";
 import PersianNumber from "../../Hooks/PersianNumber";
+import { AddToCart } from "../../Store/Actions";
 import truck from "./../../images/truck.png";
 
 const Product = () => {
   const router = useRouter();
+  const dispach = useDispatch();
   const [data, setdata] = useState(null);
   const { id } = router.query;
 
@@ -48,7 +51,7 @@ const Product = () => {
           </div>
           <div className="flex w-full gap-4 mb-8 md:flex-nowrap flex-wrap">
             <div className="flex flex-col md:w-2/3 w-full gap-4">
-              <div className="flex bg-white p-4 rounded-md">
+              <div className="flex bg-white p-4 rounded-md gap-2">
                 <div className="flex flex-col w-1/3">
                   <span className="md:max-w-[24vw]">
                     <Image
@@ -61,7 +64,7 @@ const Product = () => {
                   </span>
                 </div>
                 <div className="flex flex-col w-2/3">
-                  <span className="break-words lg:text-xl text-sm">
+                  <span className="break-words lg:text-xl md:text-base text-xs leading-6">
                     {data.title_fa}
                   </span>
                   <div className="flex">
@@ -98,7 +101,7 @@ const Product = () => {
                             />
                           </svg>
                         </span>
-                        <span className="text-gray-500 text-sm">
+                        <span className="text-gray-500 md:text-sm text-xs leading-5">
                           {data.rating.rate}% از خریداران، این کالا را پیشنهاد
                           کرده اند
                         </span>
@@ -124,7 +127,7 @@ const Product = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex bg-white p-4">
+              <div className="flex bg-white p-4 md:text-base text-sm">
                 <div className="flex flex-col w-full gap-4">
                   <h3 className="border-b-2 max-w-fit border-red-600 mb-6">
                     تجربه های خریداران
@@ -225,6 +228,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
+            {/* add to cart section */}
             <div className="flex flex-col md:w-1/3 w-full h-fit bg-white rounded sticky top-36 p-6 mb-10">
               <div className="flex flex-col gap-4">
                 <div className="flex items-center">
@@ -304,7 +308,10 @@ const Product = () => {
                   <span className="text-red-500 text-sm">
                     تنها 1 عدد در انبار فروشگاه مانده
                   </span>
-                  <button className="bg-orange-500 p-3 text-white rounded-md text-sm">
+                  <button
+                    className="bg-orange-500 p-3 text-white rounded-md text-sm"
+                    onClick={() => dispach(AddToCart(data))}
+                  >
                     اضافه به سبد خرید
                   </button>
                 </div>
@@ -313,7 +320,7 @@ const Product = () => {
           </div>
         </div>
       ) : (
-       <div className="h-[50vh] animate-pulse"></div>
+        <div className="h-[50vh] animate-pulse"></div>
       )}
     </div>
   );

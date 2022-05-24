@@ -5,13 +5,13 @@ export const ColorProducts = ({ colors }) => {
 
   return (
     <div className="flex flex-col mt-8">
-      <span>
+      <span className="md:text-base text-sm">
         رنگ : {colors.filter((color) => color.id === active)[0].title}
       </span>
       <div className="flex gap-2 mt-4">
         {colors.map((color) => (
           <div
-            className="flex w-11 h-11 rounded-full cursor-pointer border items-center justify-center"
+            className="flex md:w-11 w-9 h-9 md:h-11 rounded-full cursor-pointer border items-center justify-center"
             key={color.id}
             style={{
               backgroundColor:
@@ -29,11 +29,11 @@ export const ColorProducts = ({ colors }) => {
                       : "white"
                     : color.hex_code,
               }}
-              className="flex w-8 h-8 border-2 rounded-3xl items-center justify-center"
+              className="flex md:w-8 w-6 h-6 md:h-8 border-2 rounded-3xl items-center justify-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="md:h-5 md:w-5 h-4 w-4"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >

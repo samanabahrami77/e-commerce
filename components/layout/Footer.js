@@ -19,13 +19,13 @@ export const Footer = () => {
           <span className="md:w-16 w-12 h-12 md:h-16">
             <Image src={originalProducts} width="100%" height="100%" />
           </span>
-          <span className="md:text-sm text-xs">ضمانت اصل بودن کالا</span>
+          <span>ضمانت اصل بودن کالا</span>
         </div>
         <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
             <Image src={daysReturn} width="100%" height="100%" />
           </span>
-          <span className="md:text-sm text-xs"> ضمانت بازگشت کالا</span>
+          <span> ضمانت بازگشت کالا</span>
         </div>
         <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
