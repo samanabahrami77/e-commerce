@@ -27,6 +27,7 @@ export const CartItem = ({ product, cartProduct, dispatch }) => {
               width="100%"
               height="100%"
               layout="responsive"
+              alt="product"
             />
           </span>
         </div>

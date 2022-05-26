@@ -80,7 +80,7 @@ export const Navbar = () => {
       <div className="flex flex-col shadow-md border-b sticky bg-white top-0 z-20">
         <div className="flex items-center bg-white h-20 w-full px-8">
           {/*  logo  */}
-          <Link href={"/"}>
+          <Link href={"/"} passHref>
             <div className="flex items-center gap-2 md:ml-10 cursor-pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +124,7 @@ export const Navbar = () => {
           {/* cart and login  */}
           <div className="md:w-5/12 w-2/3 flex gap-6 justify-end items-center absolute left-8">
             {/* login icon */}
-            <Link href={"/Auth/Signin"}>
+            <Link href={"/Auth/Signin"} passHref>
               <button className="md:flex hidden items-center gap-3 text-xs border p-2 rounded-md">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +143,7 @@ export const Navbar = () => {
                 ورود به حساب کاربری
               </button>
             </Link>
-            <Link href={"/Auth/Signin"}>
+            <Link href={"/Auth/Signin"} passHref>
               <button className="md:hidden flex items-center gap-3 text-xs rounded-md">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +163,7 @@ export const Navbar = () => {
             </Link>
             <div className="w-[1.5px] min-h-[5vh] bg-gray-400"></div>
             {/* cart icon */}
-            <Link href={"/cart"}>
+            <Link href={"/Cart"} passHref>
               <button className="flex flex-col items-center text-gray-600 gap-1 text-base">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

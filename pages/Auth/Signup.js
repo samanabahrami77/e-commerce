@@ -42,7 +42,7 @@ export default function Signup() {
         className="bg-dark min-h-screen flex flex-col justify-center items-center gap-8"
         dir="rtl"
       >
-        <Link href={"/"}>
+        <Link href={"/"} passHref>
           <h1 className="text-2xl cursor-pointer ">فروشگاه</h1>
         </Link>
 

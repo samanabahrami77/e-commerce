@@ -20,7 +20,7 @@ export const ProductItem = ({ product }) => {
 
   return (
     <>
-      <Link href={`./product/${product.id}`}>
+      <Link href={`./product/${product.id}`} passHref>
         <div
           key={product.id}
           className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center shadow-gray-700
@@ -34,6 +34,7 @@ export const ProductItem = ({ product }) => {
               height="100%"
               layout="responsive"
               loading="lazy"
+              alt="product"
             />
           </div>
           {/* bodyCart */}

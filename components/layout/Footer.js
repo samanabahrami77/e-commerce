@@ -17,31 +17,31 @@ export const Footer = () => {
       <div className="flex flex-wrap justify-between md:mx-10 md:gap-0 gap-2">
         <div className="flex flex-col items-center text-xs text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
-            <Image src={originalProducts} width="100%" height="100%" />
+            <Image src={originalProducts} width="100%" height="100%" alt="originalProducts" />
           </span>
           <span>ضمانت اصل بودن کالا</span>
         </div>
         <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
-            <Image src={daysReturn} width="100%" height="100%" />
+            <Image src={daysReturn} width="100%" height="100%" alt="daysReturn" />
           </span>
           <span> ضمانت بازگشت کالا</span>
         </div>
         <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
-            <Image src={support} width="100%" height="100%" />
+            <Image src={support} width="100%" height="100%" alt="support" />
           </span>
           <span>پشتیبانی ۲۴ ﺳﺎﻋﺘﻪ</span>
         </div>
         <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
-            <Image src={cashOnDelivery} width="100%" height="100%" />
+            <Image src={cashOnDelivery} width="100%" height="100%" alt="cashOnDelivery" />
           </span>
           <span>امکان پرداخت در محل</span>
         </div>
         <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
-            <Image src={expressDelivery} width="100%" height="100%" />
+            <Image src={expressDelivery} width="100%" height="100%" alt="expressDelivery" />
           </span>
           <span>اﻣﮑﺎن ﺗﺤﻮﯾﻞ اﮐﺴﭙﺮس</span>
         </div>
@@ -80,16 +80,16 @@ export const Footer = () => {
           <h3 className="md:py-0 py-4">همراه ما باشید !</h3>
           <div className="flex justify-between pl-12">
             <button className="w-10 h-10">
-              <Image src={aparat} />
+              <Image src={aparat} alt="aparat" />
             </button>
             <button className="w-10 h-10">
-              <Image src={linkedin} />
+              <Image src={linkedin} alt="linkedin" />
             </button>
             <button className="w-10 h-10">
-              <Image src={instagram} />
+              <Image src={instagram} alt="instagram" />
             </button>
             <button className="w-10 h-10">
-              <Image src={twitter} />
+              <Image src={twitter} alt="twitter" />
             </button>
           </div>
           <div className="flex flex-col gap-4">

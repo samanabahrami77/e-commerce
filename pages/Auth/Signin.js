@@ -55,7 +55,7 @@ export default function Signin() {
         className="bg-dark min-h-screen  flex flex-col gap-8 justify-center
         items-center md:text-base text-sm"
       >
-        <Link href={"/"}>
+        <Link href={"/"} passHref>
           <h1 className="text-2xl cursor-pointer">فروشگاه</h1>
         </Link>
         <div className="bg-white shadow-sm rounded-2xl py-6 px-12 flex flex-col w-11/12 md:w-[32rem] gap-4">
@@ -105,7 +105,7 @@ export default function Signin() {
           </form>
           <div className="text-center mt-6 text-gray-700">
             آیا قبلا ثبت نام کرده اید؟
-            <Link href={"/Auth/Signup"}>
+            <Link href={"/Auth/Signup"} passHref>
               <a className="text-blue-500">ثبت نام</a>
             </Link>
           </div>

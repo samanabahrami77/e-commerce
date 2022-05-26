@@ -28,7 +28,7 @@ const Product = () => {
       {data ? (
         <div className="flex flex-col px-8 gap-4">
           <div className="flex text-gray-500 text-sm gap-2 bg-white p-4 rounded-md">
-            <Link href={"/"}>
+            <Link href={"/"} passHref>
               <button className="text-orange-500">فروشگاه</button>
             </Link>
             <span>
@@ -47,7 +47,7 @@ const Product = () => {
                 />
               </svg>
             </span>
-            <Link href={"#"}>{data.data_layer.category}</Link>{" "}
+            <Link href={"#"} passHref>{data.data_layer.category}</Link>{" "}
           </div>
           <div className="flex w-full gap-4 mb-8 md:flex-nowrap flex-wrap">
             <div className="flex flex-col md:w-2/3 w-full gap-4">
@@ -60,6 +60,7 @@ const Product = () => {
                       width="100%"
                       height="100%"
                       layout="responsive"
+                      alt="product"
                     />
                   </span>
                 </div>
@@ -296,6 +297,7 @@ const Product = () => {
                       width="100%"
                       height="100%"
                       layout="responsive"
+                      alt="truck"
                     />
                   </span>
                   <span className="text-gray-500 text-xs">ارسال فروشگاه</span>

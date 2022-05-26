@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CartItem } from "../components/Tools/CartItem";
 import PersianNumber from "../Hooks/PersianNumber";
 
-const cart = () => {
+const Cart = () => {
   const cartProduct = useSelector((state) => state.cart);
   const [sumPrice, setsumPrice] = useState(0);
 
@@ -22,7 +22,7 @@ const cart = () => {
         <div className="flex flex-col md:w-4/6 ml-4 w-full">
           <div className="flex justify-between">
             <span>سبد خرید</span>
-            <Link href={"/"}>
+            <Link href={"/"} passHref>
               <button className="text-orange-500">بازگشت به خانه</button>
             </Link>
           </div>
@@ -79,7 +79,7 @@ const cart = () => {
           <button className="bg-orange-500 text-white py-2 rounded-md">
             ادامه فرایند خرید
           </button>
-          <Link href={"/"}>
+          <Link href={"/"} passHref>
             <button className="text-orange-500 border-orange-600 border-2 py-2 rounded-md">
               انصراف از خرید
             </button>
@@ -90,4 +90,4 @@ const cart = () => {
   );
 };
 
-export default cart;
+export default Cart;
