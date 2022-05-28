@@ -3,17 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ColorProducts } from "../../components/Tools/ColorProducts";
 import PersianNumber from "../../Hooks/PersianNumber";
-import { AddToCart } from "../../Store/Actions";
+import { AddToCart, Notify } from "../../Store/Actions";
 import truck from "./../../images/truck.png";
 
 const Product = () => {
   const router = useRouter();
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
   const [data, setdata] = useState(null);
   const { id } = router.query;
+  const cartProduct = useSelector((state) => state.cart);
 
   useEffect(() => {
     if (id) {
@@ -22,6 +23,16 @@ const Product = () => {
         .then((res) => setdata(res.data.product[0]));
     }
   }, [id]);
+
+  const handleAddToCart = () => {
+    const duble = cartProduct.filter((item) => item.id === data.id);
+    if (duble.length > 0) {
+      dispatch(Notify("error", "کالای مورد نظر در سبد خرید موجود است !"));
+    } else {
+      dispatch(AddToCart(data));
+      dispatch(Notify("success", "کالای مورد نظر به سبد خرید افزوده شد"));
+    }
+  };
 
   return (
     <div className="mt-4">
@@ -47,7 +58,9 @@ const Product = () => {
                 />
               </svg>
             </span>
-            <Link href={"#"} passHref>{data.data_layer.category}</Link>{" "}
+            <Link href={"#"} passHref>
+              {data.data_layer.category}
+            </Link>{" "}
           </div>
           <div className="flex w-full gap-4 mb-8 md:flex-nowrap flex-wrap">
             <div className="flex flex-col md:w-2/3 w-full gap-4">
@@ -55,7 +68,7 @@ const Product = () => {
                 <div className="flex flex-col w-1/3">
                   <span className="md:max-w-[24vw]">
                     <Image
-                      priority={data.id == id}
+                      priority
                       src={data.images.url[0]}
                       width="100%"
                       height="100%"
@@ -312,7 +325,7 @@ const Product = () => {
                   </span>
                   <button
                     className="bg-orange-500 p-3 text-white rounded-md text-sm"
-                    onClick={() => dispach(AddToCart(data))}
+                    onClick={handleAddToCart}
                   >
                     اضافه به سبد خرید
                   </button>

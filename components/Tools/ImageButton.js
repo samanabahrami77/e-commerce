@@ -8,7 +8,7 @@ export const ImageButton = ({ src, value }) => {
         sm:justify-start justify-center hover:bg-blue-700 group
         hover:bg-opacity-20 transition duration-200 gap-2 md:text-base text-sm"
     >
-      <Image src={src} width={30} height={30} alt="button" />
+      <Image src={src} width={30} height={30} alt="button" priority />
       {value}
     </button>
   );

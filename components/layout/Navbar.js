@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { SetTheme } from "../../Store/Actions";
 
 export const Navbar = () => {
-  const cartProduct = useSelector((state) => state.cart);
+  const { cart, theme } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
-  const [theme, settheme] = useState("light");
+  const [themepage, setthemepage] = useState(theme);
+  const [themeListShow, setthemeListShow] = useState(false);
   const themeLight = (
     <svg
       viewBox="0 0 24 24"
@@ -70,10 +73,17 @@ export const Navbar = () => {
   );
 
   useEffect(() => {
-    document
-      .getElementById("theme")
-      .addEventListener("click", (el) => settheme(el.target.id));
-  }, [theme]);
+    if (themeListShow) {
+      document
+        .querySelectorAll(".option")
+        .forEach((element) =>
+          element.addEventListener("click", () =>
+            setthemepage(element.getAttribute("value"))
+          )
+        );
+      dispatch(SetTheme(themepage));
+    }
+  }, [themeListShow]);
 
   return (
     <>
@@ -161,9 +171,9 @@ export const Navbar = () => {
                 </svg>
               </button>
             </Link>
-            <div className="w-[1.5px] min-h-[5vh] bg-gray-400"></div>
+            <div className="w-[1.5px] h-5 bg-gray-400"></div>
             {/* cart icon */}
-            <Link href={"/Cart"} passHref>
+            <Link href={"/cart"} passHref>
               <button className="flex flex-col items-center text-gray-600 gap-1 text-base">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -182,13 +192,16 @@ export const Navbar = () => {
               </button>
             </Link>
             <span className="absolute text-xs flex justify-center items-center text-white bg-orange-500 w-7 h-7 left-[63px] md:-top-[3px] -top-[10px] border-white border-4 rounded-full">
-              {cartProduct ? cartProduct.length : 0}
+              {cart ? cart.length : 0}
             </span>
             {/* favorite icon */}
-            <button className="flex flex-col items-center text-gray-600 gap-1 text-base">
-              {theme === "light"
+            <button
+              className="flex flex-col items-center text-gray-600 gap-1 text-base"
+              onClick={(e) => setthemeListShow(!themeListShow)}
+            >
+              {themepage === "light"
                 ? themeLight
-                : theme === "dark"
+                : themepage === "dark"
                 ? themeDark
                 : themeSystem}
             </button>
@@ -196,26 +209,26 @@ export const Navbar = () => {
               className="flex flex-col bg-white rounded-md absolute top-16 w-40 p-2
             shadow-md text-gray-500"
               dir="ltr"
-              id="theme"
+              style={{ display: themeListShow ? "block" : "none" }}
+              onMouseLeave={() => setthemeListShow(!themeListShow)}
             >
               <li
-                className="flex gap-2 p-2 cursor-pointer hover:bg-gray-50
-                "
-                id={"dark"}
+                className="flex gap-2 p-2 cursor-pointer hover:bg-gray-50 option"
+                value={"dark"}
               >
                 {themeDark}
                 تاریک
               </li>
               <li
-                className="flex gap-2 p-2 cursor-pointer hover:bg-gray-50"
-                id={"light"}
+                className="flex gap-2 p-2 cursor-pointer hover:bg-gray-50 option"
+                value={"light"}
               >
                 {themeLight}
                 روشن
               </li>
               <li
-                className="flex gap-2 p-2 cursor-pointer hover:bg-gray-50"
-                id={"system"}
+                className="flex gap-2 p-2 cursor-pointer hover:bg-gray-50 option"
+                value={"system"}
               >
                 {themeSystem}
                 سیستم

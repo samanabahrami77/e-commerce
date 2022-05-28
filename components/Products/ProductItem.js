@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PersianNumber from "../../Hooks/PersianNumber";
-import { AddToCart } from "../../Store/Actions";
+import { AddToCart, Notify } from "../../Store/Actions";
 
 export const ProductItem = ({ product }) => {
-  const dispach = useDispatch();
+  const cartProduct = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   const whiteSpace = (title) => {
     let str = "";
@@ -16,6 +17,16 @@ export const ProductItem = ({ product }) => {
       } else return (str += "...");
     }
     return str;
+  };
+
+  const handleAddToCart = () => {
+    const duble = cartProduct.filter((item) => item.id === product.id);
+    if (duble.length > 0) {
+      dispatch(Notify("error", "کالای مورد نظر در سبد خرید موجود است !"));
+    } else {
+      dispatch(AddToCart(product));
+      dispatch(Notify("success", "کالای مورد نظر به سبد خرید افزوده شد"));
+    }
   };
 
   return (
@@ -33,8 +44,8 @@ export const ProductItem = ({ product }) => {
               width="100%"
               height="100%"
               layout="responsive"
-              loading="lazy"
               alt="product"
+              priority
             />
           </div>
           {/* bodyCart */}
@@ -63,7 +74,7 @@ export const ProductItem = ({ product }) => {
               <button
                 className="flex justify-center items-center bg-primary text-white rounded p-1 hover:text-primary
                     hover:bg-white hover:border h-6 w-6 border-primary"
-                onClick={() => dispach(AddToCart(product))}
+                onClick={handleAddToCart}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

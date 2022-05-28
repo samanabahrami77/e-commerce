@@ -29,3 +29,7 @@ export const increaseNumOfProduct = (id, product) => {
 export const decreaseNumOfProduct = (id, product) => {
   return { type: "DECREASE_NUMBER_OF_PRODUCT", payload: { id, product } };
 };
+
+export const SetTheme = (theme) => {
+  return { type: "SET_THEME", payload: theme };
+};

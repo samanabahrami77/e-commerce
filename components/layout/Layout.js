@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Toast } from "../Tools/Toast";
 import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 
 export const Layout = ({ children }) => {
   const [IsShow, setIsShow] = useState(false);
-  const { massege } = useSelector((state) => state);
+  const {massege}  = useSelector((state) => state);
 
   const notifyColor = {
     error: { color: "red", bg: "#ffd0d0" },

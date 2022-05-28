@@ -5,14 +5,46 @@ import Filter from "./Filter";
 import { ProductLoad } from "./ProductLoad";
 
 export const Products = () => {
-  const [active1, setactive1] = useState(true);
-  const [active2, setactive2] = useState(false);
-  const [active3, setactive3] = useState(false);
-  const [active4, setactive4] = useState(false);
+  const [mostvisited, setmostvisited] = useState(true);
+  const [cheapest, setcheapest] = useState(false);
+  const [mostexpensive, setmostexpensive] = useState(false);
+  const [mostpopular, setmostpopular] = useState(false);
 
-  const { product } = useSelector((state) => state);
+  const { product } = useSelector((state) => state.product);
 
-  useEffect(() => {}, [active1, active2, active3, active4]);
+  const [productItem, setproductItem] = useState([]);
+
+  useEffect(() => {
+    if (mostexpensive) {
+      return setproductItem(
+        product ? [...product].sort((a, b) => b.price - a.price) : []
+      );
+    }
+
+    if (mostvisited) {
+      return setproductItem(
+        product
+          ? [...product].sort((a, b) => b.rating.count - a.rating.count)
+          : []
+      );
+    }
+
+    if (cheapest) {
+      return setproductItem(
+        product ? [...product].sort((a, b) => a.price - b.price) : []
+      );
+    }
+
+    if (mostpopular) {
+      return setproductItem(
+        product
+          ? [...product].sort((a, b) => b.rating.rate - a.rating.rate)
+          : []
+      );
+    }
+  }, [mostexpensive, mostpopular, mostvisited, cheapest, product]);
+
+  console.log(productItem);
 
   return (
     <div className="flex justify-center md:p-14 p-2 bg-gray-100">
@@ -42,18 +74,18 @@ export const Products = () => {
             <button
               className="relative focus:text-gray-700 focus:font-bold"
               style={{
-                color: active1 ? "#374151" : "rgb(107,114,128)",
-                fontWeight: active1 ? "bold" : "normal",
+                color: mostvisited ? "#374151" : "rgb(107,114,128)",
+                fontWeight: mostvisited ? "bold" : "normal",
               }}
               onClick={() => {
-                setactive2(false);
-                setactive3(false);
-                setactive4(false);
-                setactive1(true);
+                setcheapest(false);
+                setmostexpensive(false);
+                setmostpopular(false);
+                setmostvisited(true);
               }}
             >
               پربازدید ترین
-              {active1 ? (
+              {mostvisited ? (
                 <span className="bg-orange-600 w-2 h-2 absolute rounded-full -top-1"></span>
               ) : (
                 ""
@@ -62,14 +94,14 @@ export const Products = () => {
             <button
               className="relative focus:text-gray-700 focus:font-bold"
               onClick={() => {
-                setactive2(true);
-                setactive3(false);
-                setactive4(false);
-                setactive1(false);
+                setcheapest(true);
+                setmostexpensive(false);
+                setmostpopular(false);
+                setmostvisited(false);
               }}
             >
               ارزان ترین
-              {active2 ? (
+              {cheapest ? (
                 <span className="bg-orange-600 w-2 h-2 absolute rounded-full -top-1"></span>
               ) : (
                 ""
@@ -78,14 +110,14 @@ export const Products = () => {
             <button
               className="relative focus:text-gray-700 focus:font-bold"
               onClick={() => {
-                setactive2(false);
-                setactive3(true);
-                setactive4(false);
-                setactive1(false);
+                setcheapest(false);
+                setmostexpensive(true);
+                setmostpopular(false);
+                setmostvisited(false);
               }}
             >
               گران ترین
-              {active3 ? (
+              {mostexpensive ? (
                 <span className="bg-orange-600 w-2 h-2 absolute rounded-full -top-1"></span>
               ) : (
                 ""
@@ -94,14 +126,14 @@ export const Products = () => {
             <button
               className="relative focus:text-gray-700 focus:font-bold"
               onClick={() => {
-                setactive2(false);
-                setactive3(false);
-                setactive4(true);
-                setactive1(false);
+                setcheapest(false);
+                setmostexpensive(false);
+                setmostpopular(true);
+                setmostvisited(false);
               }}
             >
               محبوب ترین
-              {active4 ? (
+              {mostpopular ? (
                 <span className="bg-orange-600 w-2 h-2 absolute rounded-full -top-1"></span>
               ) : (
                 ""
@@ -110,8 +142,8 @@ export const Products = () => {
           </div>
         </div>
         <div className="flex custom:flex-col sm:flex-wrap justify-center">
-          {product.product ? (
-            product.product.map((item) => (
+          {productItem.length > 0 ? (
+            productItem.map((item) => (
               <ProductItem product={item} key={item.id} />
             ))
           ) : (

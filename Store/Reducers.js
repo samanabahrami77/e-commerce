@@ -5,6 +5,7 @@ export default (
     product: {},
     loading: false,
     cart: [],
+    theme: "light",
   },
   action
 ) => {
@@ -48,6 +49,8 @@ export default (
             : { ...item, Quanity: item.Quanity }
         ),
       };
+    case "SET_THEME":
+      return { ...state, theme: action.payload };
     default:
       return state;
   }

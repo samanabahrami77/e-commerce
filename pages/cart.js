@@ -30,7 +30,7 @@ const Cart = () => {
         <div className="flex flex-col md:w-2/6 w-full"></div>
       </div>
       <div className="flex md:flex-nowrap flex-wrap my-8 mx-12 gap-4">
-        <div className="flex flex-col md:w-4/6 w-full">
+        <div className="flex flex-col md:w-4/6 w-full gap-4">
           {cartProduct.length > 0 ? (
             cartProduct.map((item) => (
               <CartItem
