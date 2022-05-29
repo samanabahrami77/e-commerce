@@ -4,15 +4,14 @@ import { ProductItem } from "./ProductItem";
 import Filter from "./Filter";
 import { ProductLoad } from "./ProductLoad";
 
-export const Products = () => {
+export const Products = ({ product }) => {
   const [mostvisited, setmostvisited] = useState(true);
   const [cheapest, setcheapest] = useState(false);
   const [mostexpensive, setmostexpensive] = useState(false);
   const [mostpopular, setmostpopular] = useState(false);
-
-  const { product } = useSelector((state) => state.product);
-
   const [productItem, setproductItem] = useState([]);
+
+  console.log(product);
 
   useEffect(() => {
     if (mostexpensive) {
@@ -44,12 +43,10 @@ export const Products = () => {
     }
   }, [mostexpensive, mostpopular, mostvisited, cheapest, product]);
 
-  console.log(productItem);
-
   return (
     <div className="flex justify-center md:p-14 p-2 bg-gray-100">
       <div className="xl:flex hidden xl:w-1/4 h-fit xl:sticky xl:top-24">
-        <Filter />
+        <Filter product={product} />
       </div>
       <div className="flex flex-col xl:w-3/4 gap-4">
         <div className="flex gap-3 text-gray-500 bg-white rounded p-3 items-center">
@@ -72,7 +69,7 @@ export const Products = () => {
           </span>
           <div className="flex gap-6 mr-2 text-gray-500">
             <button
-              className="relative focus:text-gray-700 focus:font-bold"
+              className="relative "
               style={{
                 color: mostvisited ? "#374151" : "rgb(107,114,128)",
                 fontWeight: mostvisited ? "bold" : "normal",
@@ -92,7 +89,11 @@ export const Products = () => {
               )}
             </button>
             <button
-              className="relative focus:text-gray-700 focus:font-bold"
+              className="relative "
+              style={{
+                color: cheapest ? "#374151" : "rgb(107,114,128)",
+                fontWeight: cheapest ? "bold" : "normal",
+              }}
               onClick={() => {
                 setcheapest(true);
                 setmostexpensive(false);
@@ -108,7 +109,11 @@ export const Products = () => {
               )}
             </button>
             <button
-              className="relative focus:text-gray-700 focus:font-bold"
+              className="relative "
+              style={{
+                color: mostexpensive ? "#374151" : "rgb(107,114,128)",
+                fontWeight: mostexpensive ? "bold" : "normal",
+              }}
               onClick={() => {
                 setcheapest(false);
                 setmostexpensive(true);
@@ -124,7 +129,11 @@ export const Products = () => {
               )}
             </button>
             <button
-              className="relative focus:text-gray-700 focus:font-bold"
+              className="relative "
+              style={{
+                color: mostpopular ? "#374151" : "rgb(107,114,128)",
+                fontWeight: mostpopular ? "bold" : "normal",
+              }}
               onClick={() => {
                 setcheapest(false);
                 setmostexpensive(false);
@@ -141,7 +150,7 @@ export const Products = () => {
             </button>
           </div>
         </div>
-        <div className="flex custom:flex-col sm:flex-wrap justify-center">
+        <div className="flex custom:flex-col sm:flex-wrap">
           {productItem.length > 0 ? (
             productItem.map((item) => (
               <ProductItem product={item} key={item.id} />

@@ -1,5 +1,6 @@
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { SetFilter } from "../../Store/Actions";
 import { PriceRange } from "../Tools/PriceRange";
 
 const Filter = () => {
@@ -7,6 +8,10 @@ const Filter = () => {
   const [displayBrand, setdisplaybrand] = useState("none");
   const [showRangeBtn, setshowRangeBtn] = useState(true);
   const [displayRange, setdisplayRange] = useState("none");
+
+  const dispatch = useDispatch();
+
+  const { product } = useSelector((state) => state.product);
 
   const handelShowBrand = () => {
     setshowBrandBtn(!showBrandBtn);
@@ -28,13 +33,70 @@ const Filter = () => {
     } else setdisplayRange("flex");
   }, [showRangeBtn]);
 
+  const [IsMobile, setIsMobile] = useState(false);
+  const [IsLaptop, setIsLaptop] = useState(false);
+  const [IsOther, setIsOther] = useState(false);
+  const [IsAll, setIsAll] = useState(true);
+
   return (
     <div
       className="flex bg-white flex-col gap-4 w-full ml-4 rounded-md p-6 text-gray-700
     text-lg"
     >
       <h1 className="text-2xl text-orange-600">دسته بندی</h1>
-      <button className="flex gap-2 relative text-gray-400 hover:bg-gray-50 p-1 focus:text-gray-700 text-base">
+      <button
+        className="flex gap-2 relative text-gray-400 hover:bg-gray-50 p-1
+        text-base"
+        style={{
+          color: IsAll ? "#374151" : "rgb(107,114,128)",
+          fontWeight: IsAll ? "bold" : "normal",
+        }}
+        onClick={() => {
+          dispatch(SetFilter(product.filter((item) => item)));
+          setIsMobile(false);
+          setIsLaptop(false);
+          setIsOther(false);
+          setIsAll(true);
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 z-10"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+          />
+        </svg>
+        <span className="absolute bg-gray-100 w-6 h-6 rounded-full -right-[8px] -top-[8px]"></span>
+        همه محصولات
+      </button>
+      <button
+        className="flex gap-2 relative text-gray-400 hover:bg-gray-50 p-1
+        text-base"
+        style={{
+          color: IsMobile ? "#374151" : "rgb(107,114,128)",
+          fontWeight: IsMobile ? "bold" : "normal",
+        }}
+        onClick={() => {
+          dispatch(
+            SetFilter(
+              product.filter(
+                (item) => item.data_layer.category === "گوشی موبایل"
+              )
+            )
+          );
+          setIsMobile(true);
+          setIsLaptop(false);
+          setIsOther(false);
+          setIsAll(false);
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5 z-10"
@@ -52,7 +114,27 @@ const Filter = () => {
         <span className="absolute bg-gray-100 w-6 h-6 rounded-full -right-[8px] -top-[8px]"></span>
         تلفن همراه
       </button>
-      <button className="flex gap-2 relative text-gray-400 hover:bg-gray-50 p-1 focus:text-gray-700 text-base">
+      <button
+        className="flex gap-2 relative text-gray-400 hover:bg-gray-50 p-1 
+    text-base"
+        style={{
+          color: IsLaptop ? "#374151" : "rgb(107,114,128)",
+          fontWeight: IsLaptop ? "bold" : "normal",
+        }}
+        onClick={() => {
+          dispatch(
+            SetFilter(
+              product.filter(
+                (item) => item.data_layer.category === "لپ تاپ و الترابوک"
+              )
+            )
+          );
+          setIsMobile(false);
+          setIsLaptop(true);
+          setIsOther(false);
+          setIsAll(false);
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5 z-10"
@@ -70,7 +152,28 @@ const Filter = () => {
         <span className="absolute bg-gray-100 w-6 h-6 rounded-full -right-[9px] -top-[9px]"></span>
         لپ تاپ
       </button>
-      <button className="flex gap-2 relative text-gray-400 hover:bg-gray-50 p-1 focus:text-gray-700 text-base">
+      <button
+        className="flex gap-2 relative text-gray-400 hover:bg-gray-50 p-1 text-base"
+        style={{
+          color: IsOther ? "#374151" : "rgb(107,114,128)",
+          fontWeight: IsOther ? "bold" : "normal",
+        }}
+        onClick={() => {
+          dispatch(
+            SetFilter(
+              product.filter(
+                (item) =>
+                  item.data_layer.category !== "لپ تاپ و الترابوک" &&
+                  item.data_layer.category !== "گوشی موبایل"
+              )
+            )
+          );
+          setIsMobile(false);
+          setIsLaptop(false);
+          setIsOther(true);
+          setIsAll(false);
+        }}
+      >
         <span className="w-5 h-5 z-10">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -93,8 +196,8 @@ const Filter = () => {
 
       <h1 className="text-2xl text-orange-600 mt-6">فیلتر</h1>
       <button
-        className="flex justify-between text-gray-400 focus:text-gray-700 hover:bg-gray-50
-         rounded-md"
+        className="flex justify-between text-gray-700 hover:bg-gray-50
+         rounded-md pt-2"
         onClick={handelShowBrand}
       >
         <span className="flex gap-2 relative">
@@ -149,9 +252,15 @@ const Filter = () => {
         className="flex-col text-base gap-2 h-48 overflow-y-scroll"
         style={{ display: displayBrand }}
       >
-        <li className="flex items-center gap-6 border-b p-2">
-          <input type="checkbox" className="scale-150" /> <span>اپل</span>
-        </li>
+        <button className="flex items-center gap-6 border-b p-2">
+          <input
+            type="checkbox"
+            className="ml-2 form-checkbox focus:ring-white checked:after:hidden
+             text-orange-400 checked:hover:bg-orange-400 checked:bg-orange-400
+              rounded border-orange-500"
+          />
+          <span>اپل</span>
+        </button>
         <li className="flex items-center gap-6 border-b p-2">
           <input type="checkbox" name="" id="" className="scale-150" />{" "}
           <span>سامسونگ</span>
@@ -170,7 +279,7 @@ const Filter = () => {
         </li>
       </ul>
       <button
-        className="flex justify-between pt-2 text-gray-400 focus:text-gray-700 hover:bg-gray-50 rounded-md"
+        className="flex justify-between pt-2 text-gray-700 hover:bg-gray-50 rounded-md"
         onClick={handelShowRange}
       >
         <span className="flex gap-2 relative">

@@ -33,3 +33,7 @@ export const decreaseNumOfProduct = (id, product) => {
 export const SetTheme = (theme) => {
   return { type: "SET_THEME", payload: theme };
 };
+
+export const SetFilter = (product) => {
+  return { type: "SET_FILTER", payload: product };
+};
