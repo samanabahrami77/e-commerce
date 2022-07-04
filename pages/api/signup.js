@@ -1,7 +1,5 @@
 import ConnectDB from "../../utils/mongodb";
-import JWT from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import cookies from "cookies";
 import user from "../../utils/models/user";
 
 ConnectDB();

@@ -10,10 +10,6 @@ export const Product = (product) => {
   return { type: "PRODUCT", payload: product };
 };
 
-export const Loading = () => {
-  return { type: "LOADING", payload: false };
-};
-
 export const AddToCart = (product) => {
   return { type: "ADD_TO_CART", payload: product };
 };
@@ -36,4 +32,12 @@ export const SetTheme = (theme) => {
 
 export const SetFilter = (product) => {
   return { type: "SET_FILTER", payload: product };
+};
+
+export const Logout = () => {
+  return { type: "LOG_OUT" };
+};
+
+export const ClearSearch = () => {
+  return { type: "CLEAR_SEARCH" };
 };

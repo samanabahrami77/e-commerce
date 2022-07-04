@@ -1,14 +1,21 @@
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SetTheme } from "../../Store/Actions";
+import {
+  ClearSearch,
+  SetFilter,
+  SetTheme,
+} from "../../Store/Actions";
 
 export const Navbar = () => {
-  const { cart, theme } = useSelector((state) => state);
+  const { cart, theme, user, product } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const [themepage, setthemepage] = useState(theme);
   const [themeListShow, setthemeListShow] = useState(false);
+  const [userName, setuserName] = useState();
+  const [searchValue, setsearchValue] = useState("");
+
   const themeLight = (
     <svg
       viewBox="0 0 24 24"
@@ -85,6 +92,29 @@ export const Navbar = () => {
     }
   }, [themeListShow]);
 
+  useEffect(() => {
+    setuserName(user.email ? user.email.split("@")[0] : "");
+  }, [user]);
+
+  const handleSearch = () => {
+    dispatch(
+      SetFilter(
+        product.product.filter((item) => item.title_fa.includes(searchValue))
+      )
+    );
+  };
+
+  useEffect(() => {
+    if (searchValue === "") {
+      dispatch(ClearSearch());
+    } else {
+      const filtered = product.product.filter((item) =>
+        item.title_fa.includes(searchValue)
+      );
+      dispatch(SetFilter(filtered));
+    }
+  }, [searchValue]);
+
   return (
     <>
       <div className="flex flex-col shadow-md border-b sticky bg-white top-0 z-20">
@@ -112,21 +142,25 @@ export const Navbar = () => {
           </Link>
           {/* search input  */}
           <div className="md:flex items-center hidden bg-dark w-5/12 rounded-md px-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="stroke-gray-400 h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
+            <button onClick={handleSearch}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-gray-400 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
             <input
               type="text"
+              value={searchValue}
+              onChange={(e) => setsearchValue(e.target.value)}
               className="outline-none h-12 px-2 bg-dark w-full"
               placeholder="جستجو در بازار"
             />
@@ -134,43 +168,87 @@ export const Navbar = () => {
           {/* cart and login  */}
           <div className="md:w-5/12 w-2/3 flex gap-6 justify-end items-center absolute left-8">
             {/* login icon */}
-            <Link href={"/Auth/Signin"} passHref>
-              <button className="md:flex hidden items-center gap-3 text-xs border p-2 rounded-md">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-gray-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                ورود به حساب کاربری
-              </button>
-            </Link>
-            <Link href={"/Auth/Signin"} passHref>
-              <button className="md:hidden flex items-center gap-3 text-xs rounded-md">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-gray-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </button>
-            </Link>
+            {userName !== "" ? (
+              <Link href={"/profile"} passHref>
+                <button className="md:flex hidden flex-col items-center text-xs gap-1">
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8 text-gray-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  {userName}
+                </button>
+              </Link>
+            ) : (
+              <Link href={"/Auth/Signin"} passHref>
+                <button className="md:flex hidden items-center gap-3 text-xs border p-2 rounded-md">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 text-gray-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  ورود به حساب کاربری
+                </button>
+              </Link>
+            )}
+            {userName !== "" ? (
+              <Link href={"/profile"} passHref>
+                <button className="md:hidden flex items-center gap-3 text-xs rounded-md">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 text-gray-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            ) : (
+              <Link href={"/Auth/Signin"} passHref>
+                <button className="md:hidden flex items-center gap-3 text-xs rounded-md">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 text-gray-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            )}
             <div className="w-[1.5px] h-5 bg-gray-400"></div>
             {/* cart icon */}
             <Link href={"/cart"} passHref>

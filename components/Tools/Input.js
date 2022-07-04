@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
-export const Input = ({ data, jsx, aLink, label, value, onChange }) => {
+const Input = ({ data, jsx, aLink, label, value, onChange }) => {
   const [IshowPasword, setIshowPasword] = useState(false);
   const handleShowPasword = (e) => {
     e.preventDefault();
-    setIshowPasword(!IshowPasword);
+    if (data === "password") {
+      setIshowPasword(!IshowPasword);
+    }
   };
 
   return (
@@ -55,3 +57,5 @@ export const Input = ({ data, jsx, aLink, label, value, onChange }) => {
     </>
   );
 };
+
+export default memo(Input);

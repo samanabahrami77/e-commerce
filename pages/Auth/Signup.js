@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "../../components/Tools/Button";
 import { ImageButton } from "../../components/Tools/ImageButton";
-import { Input } from "../../components/Tools/Input";
+import  Input  from "../../components/Tools/Input";
 
 import google from "../../images/google.png";
 import { Notify } from "../../Store/Actions";
@@ -21,14 +21,18 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email !== "" && password !== "") {
-      axios.post("/api/signup", { email, password }).then((res) => {
-        if (res.data.error) {
-          dispatch(Notify("error", "ایمیل وجود داره"));
-        } else {
-          dispatch(Notify("success", "successed"));
-          router.push("/Auth/Signin");
-        }
-      });
+      if (password===re_password) {   
+        axios.post("/api/signup", { email, password }).then((res) => {
+          if (res.data.error) {
+            dispatch(Notify("error", "ایمیل وارد شده قبلا ثبت شده !"));
+          } else {
+            dispatch(Notify("success", "ثبت نام با موفقیت انجام شد"));
+            router.push("/Auth/Signin");
+          }
+        });
+      }else{
+        dispatch(Notify("error", "تکرار رمز اشتباه است"));
+      }
     }
   };
 

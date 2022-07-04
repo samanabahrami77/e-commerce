@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { ProductItem } from "./ProductItem";
 import Filter from "./Filter";
 import { ProductLoad } from "./ProductLoad";
@@ -10,8 +9,6 @@ export const Products = ({ product }) => {
   const [mostexpensive, setmostexpensive] = useState(false);
   const [mostpopular, setmostpopular] = useState(false);
   const [productItem, setproductItem] = useState([]);
-
-  console.log(product);
 
   useEffect(() => {
     if (mostexpensive) {
@@ -45,10 +42,10 @@ export const Products = ({ product }) => {
 
   return (
     <div className="flex justify-center md:p-14 p-2 bg-gray-100">
-      <div className="xl:flex hidden xl:w-1/4 h-fit xl:sticky xl:top-24">
+      <div className="xl:flex hidden w-full xl:w-1/4 h-fit xl:sticky xl:top-24">
         <Filter product={product} />
       </div>
-      <div className="flex flex-col xl:w-3/4 gap-4">
+      <div className="flex flex-col w-full xl:w-3/4 gap-4">
         <div className="flex gap-3 text-gray-500 bg-white rounded p-3 items-center">
           <span className="bg-orange-100 p-1 rounded">
             <svg

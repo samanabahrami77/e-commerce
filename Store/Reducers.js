@@ -3,7 +3,6 @@ export default (
     user: {},
     massege: { status: "", massege: "" },
     product: {},
-    loading: false,
     cart: [],
     theme: "light",
     filter: [],
@@ -23,8 +22,6 @@ export default (
       };
     case "PRODUCT":
       return { ...state, product: action.payload };
-    case "LOADING":
-      return { ...state, loading: !action.payload };
     case "ADD_TO_CART":
       return { ...state, cart: [...state.cart, action.payload] };
     case "REMOVE_CART":
@@ -54,6 +51,11 @@ export default (
       return { ...state, theme: action.payload };
     case "SET_FILTER":
       return { ...state, filter: action.payload };
+    case "LOG_OUT":
+      return { ...state, user: {} };
+    case "CLEAR_SEARCH": {
+      return { ...state, filter: [] };
+    }
     default:
       return state;
   }
