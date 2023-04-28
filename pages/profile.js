@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Logout } from "../Store/Actions";
+import { useRouter } from "next/router";
 
 const Profile = () => {
-  console.log(useSelector((state) => state));
+  const { user } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const { push } = useRouter();
+
+  useEffect(() => {
+    if (!user.email) {
+      push("/");
+    }
+  }, [user]);
+
   return (
     <div className="flex mx-14 my-10">
       <div className="flex flex-col w-1/4 bg-white rounded">
         <span>مشخصات</span>
+        <div>
+          <span>ایمیل : </span>
+        <span>{user.email}</span>
+        </div>
         <button
           className="bg-red-500 py-3 text-white rounded"
           onClick={() => dispatch(Logout())}

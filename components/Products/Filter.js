@@ -8,6 +8,7 @@ const Filter = () => {
   const [displayBrand, setdisplaybrand] = useState("none");
   const [showRangeBtn, setshowRangeBtn] = useState(true);
   const [displayRange, setdisplayRange] = useState("none");
+  const [brand, setBrand] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -20,7 +21,11 @@ const Filter = () => {
   const handelShowRange = () => {
     setshowRangeBtn(!showRangeBtn);
   };
-
+  const saveBrandName = (str) => {
+    brand.includes(str)
+      ? setBrand(brand.filter((item) => item != str))
+      : setBrand([...brand, str]);
+  };
   useEffect(() => {
     if (showBrandBtn) {
       setdisplaybrand("none");
@@ -32,6 +37,16 @@ const Filter = () => {
       setdisplayRange("none");
     } else setdisplayRange("flex");
   }, [showRangeBtn]);
+
+  useEffect(() => {
+    if (product && product.length > 0) {
+      dispatch(
+        SetFilter(
+          product.filter((item) => brand.includes(item.data_layer.brand))
+        )
+      );
+    }
+  }, [brand]);
 
   const [IsMobile, setIsMobile] = useState(false);
   const [IsLaptop, setIsLaptop] = useState(false);
@@ -234,17 +249,15 @@ const Filter = () => {
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-gray-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
+            className="h-6 w-6 transition-all duration-500 text-gray-500"
+            viewBox="0 0 20 20"
+            fill="currentColor"
           >
             <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 15l7-7 7 7"
-            />
+              fillRule="evenodd"
+              d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+              clipRule="evenodd"
+            ></path>
           </svg>
         )}
       </button>
@@ -254,27 +267,42 @@ const Filter = () => {
       >
         <button className="flex items-center gap-6 border-b p-2">
           <input
+            onClick={() => saveBrandName("اپل")}
             type="checkbox"
-            className="ml-2 form-checkbox focus:ring-white checked:after:hidden
-             text-orange-400 checked:hover:bg-orange-400 checked:bg-orange-400
-              rounded border-orange-500"
+            className="scale-150"
           />
           <span>اپل</span>
         </button>
         <li className="flex items-center gap-6 border-b p-2">
-          <input type="checkbox" name="" id="" className="scale-150" />{" "}
+          <input
+            onClick={() => saveBrandName("سامسونگ")}
+            type="checkbox"
+            className="scale-150"
+          />{" "}
           <span>سامسونگ</span>
         </li>
         <li className="flex items-center gap-6 border-b p-2">
-          <input type="checkbox" name="" id="" className="scale-150" />{" "}
+          <input
+            onClick={() => saveBrandName("شیائومی")}
+            type="checkbox"
+            className="scale-150"
+          />{" "}
           <span>شیائومی</span>
         </li>
         <li className="flex items-center gap-6 border-b p-2">
-          <input type="checkbox" name="" id="" className="scale-150" />{" "}
+          <input
+            onClick={() => saveBrandName("ایسوس")}
+            type="checkbox"
+            className="scale-150"
+          />{" "}
           <span>ایسوس</span>
         </li>
         <li className="flex items-center gap-6 border-b p-2">
-          <input type="checkbox" name="" id="" className="scale-150" />{" "}
+          <input
+            onClick={() => saveBrandName("لنوو")}
+            type="checkbox"
+            className="scale-150"
+          />{" "}
           <span>لنوو</span>
         </li>
       </ul>
@@ -315,19 +343,17 @@ const Filter = () => {
           </svg>
         ) : (
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-gray-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 15l7-7 7 7"
-            />
-          </svg>
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 transition-all duration-500 text-gray-500"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fillRule="evenodd"
+            d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+            clipRule="evenodd"
+          ></path>
+        </svg>
         )}
       </button>
       <div style={{ display: displayRange }} className="flex flex-col">

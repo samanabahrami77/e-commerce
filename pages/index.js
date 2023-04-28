@@ -7,7 +7,6 @@ import { Products } from "../components/Products";
 export default function Home() {
   const dispatch = useDispatch();
   const { product, filter } = useSelector((state) => state);
-
   useEffect(() => {
     axios.get("/api/product").then((res) => dispatch(Product(res.data)));
   }, [dispatch]);

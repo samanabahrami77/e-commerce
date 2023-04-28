@@ -24,9 +24,10 @@ a {
 
 /* checkbox */
 
-input[type="checkbox"] {
-  accent-color: rgb(251 146 60);
-}
+/* input[type="checkbox"] {
+  /* accent-color: rgb(251 146 60);
+}*/
+
 
 /* rangeslider */
 

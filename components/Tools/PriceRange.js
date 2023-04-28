@@ -1,11 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { SetFilter } from "../../Store/Actions";
 
 export const PriceRange = () => {
   const [minvalue, setMinValue] = useState(0);
   const [maxvalue, setMaxValue] = useState(100000000);
   const minGap = 0;
+  const dispatch = useDispatch();
+  const { product } = useSelector((state) => state.product);
 
   useEffect(() => {
+    if (product) {
+      dispatch(
+        SetFilter(
+          product.filter(
+            (item) => item.price/10 <= maxvalue && item.price/10 >= minvalue
+          )
+        )
+      );
+    }
     if (maxvalue - minvalue <= minGap) {
       setMaxValue(parseInt(minvalue) - minGap);
     }

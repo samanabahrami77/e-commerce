@@ -26,12 +26,6 @@ a {
   text-decoration: none;
 }
 
-/* checkbox */
-
-input[type="checkbox"] {
-  accent-color: rgb(251 146 60);
-}
-
 /* rangeslider */
 
 .range {
