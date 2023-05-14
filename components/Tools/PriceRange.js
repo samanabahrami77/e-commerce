@@ -34,21 +34,21 @@ export const PriceRange = () => {
 
   return (
     <>
-      <div className="flex items-center">
+      <div className="flex items-center justify-between">
         <span className="text-base">از</span>
         <input
           type="text"
-          className="flex text-left outline-none shadow-none p-2 border-b font-bold text-2xl text-gray-800 w-11/12"
+          className="flex text-left text-sm outline-none shadow-none p-2 border-b dark:border-none dark:w-10/12 font-bold text-gray-800 rounded dark:bg-slate-800 dark:text-white w-11/12"
           onChange={(e) => setMinValue(e.target.value)}
           value={minvalue}
         />
         <span className="text-base mr-1">تومان</span>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center justify-between">
         <span className="text-base">تا</span>
         <input
           type="text"
-          className="flex text-left outline-none shadow-none p-2 border-b font-bold text-2xl text-gray-800 w-11/12"
+          className="flex text-left outline-none shadow-none p-2 border-b dark:border-none dark:w-10/12 font-bold text-sm text-gray-800 rounded dark:bg-slate-800 dark:text-white w-11/12"
           onChange={(e) => setMaxValue(e.target.value)}
           value={maxvalue}
         />

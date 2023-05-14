@@ -117,8 +117,8 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className="flex flex-col shadow-md border-b sticky bg-white top-0 z-20">
-        <div className="flex items-center bg-white h-20 w-full px-8">
+      <div className="flex flex-col shadow-md border-b sticky dark:border-slate-700 dark:bg-slate-900 dark:text-white bg-white top-0 z-20">
+        <div className="flex items-center dark:bg-slate-900 dark:text-white bg-white h-20 w-full px-8">
           {/*  logo  */}
           <Link href={"/"} passHref>
             <div className="flex items-center gap-2 md:ml-10 cursor-pointer">
@@ -136,16 +136,16 @@ export const Navbar = () => {
               </svg>
               <div className="flex flex-col items-center">
                 <h1 className="font-bold text-base text-orange-500">فروشگاه</h1>
-                <h3 className="text-xs text-gray-500">market</h3>
+                <h3 className="text-xs text-gray-500 dark:text-white">market</h3>
               </div>
             </div>
           </Link>
           {/* search input  */}
-          <div className="md:flex items-center hidden bg-dark w-5/12 rounded-md px-2">
+          <div className="md:flex items-center hidden dark:text-white dark:bg-slate-800 bg-dark w-5/12 rounded-md px-2">
             <button onClick={handleSearch}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="stroke-gray-400 h-6 w-6"
+                className="stroke-gray-400 dark:stroke-white h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1"
@@ -161,7 +161,7 @@ export const Navbar = () => {
               type="text"
               value={searchValue}
               onChange={(e) => setsearchValue(e.target.value)}
-              className="outline-none h-12 px-2 bg-dark w-full"
+              className="outline-none h-12 px-2 bg-dark dark:placeholder-white dark:text-white dark:bg-slate-800 w-full"
               placeholder="جستجو در بازار"
             />
           </div>
@@ -174,7 +174,7 @@ export const Navbar = () => {
                   {" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8 text-gray-600"
+                    className="h-8 w-8 text-gray-600 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -194,7 +194,7 @@ export const Navbar = () => {
                 <button className="md:flex hidden items-center gap-3 text-xs border p-2 rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-gray-600"
+                    className="h-6 w-6 text-gray-600 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -215,7 +215,7 @@ export const Navbar = () => {
                 <button className="md:hidden flex items-center gap-3 text-xs rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-gray-600"
+                    className="h-6 w-6 text-gray-600 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -234,7 +234,7 @@ export const Navbar = () => {
                 <button className="md:hidden flex items-center gap-3 text-xs rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-gray-600"
+                    className="h-6 w-6 text-gray-600 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -252,7 +252,7 @@ export const Navbar = () => {
             <div className="w-[1.5px] h-5 bg-gray-400"></div>
             {/* cart icon */}
             <Link href={"/cart"} passHref>
-              <button className="flex flex-col items-center text-gray-600 gap-1 text-base">
+              <button className="flex flex-col items-center dark:text-white text-gray-600 gap-1 text-base">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -269,12 +269,12 @@ export const Navbar = () => {
                 </svg>
               </button>
             </Link>
-            <span className="absolute text-xs flex justify-center items-center text-white bg-orange-500 w-7 h-7 left-[63px] md:-top-[3px] -top-[10px] border-white border-4 rounded-full">
+            <span className="absolute text-xs flex justify-center items-center dark:border-none text-white bg-orange-500 w-7 h-7 left-[63px] md:-top-[3px] -top-[10px] border-white border-4 rounded-full">
               {cart ? cart.length : 0}
             </span>
             {/* favorite icon */}
             <button
-              className="flex flex-col items-center text-gray-600 gap-1 text-base"
+              className="flex flex-col items-center dark:text-white text-gray-600 gap-1 text-base"
               onClick={(e) => setthemeListShow(!themeListShow)}
             >
               {themepage === "light"
@@ -315,10 +315,10 @@ export const Navbar = () => {
           </div>
         </div>
         {/* mobile search input  */}
-        <div className="md:hidden items-center flex bg-dark w-10/12 rounded-md mx-auto px-2 mb-4 ">
+        <div className="md:hidden items-center flex dark:text-white dark:bg-slate-800 bg-dark w-10/12 rounded-md mx-auto px-2 mb-4 ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="stroke-gray-400 h-6 w-6"
+            className="stroke-gray-400 dark:stroke-white h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1"
@@ -331,7 +331,7 @@ export const Navbar = () => {
           </svg>
           <input
             type="text"
-            className="outline-none h-12 px-2 bg-dark w-full"
+            className="outline-none h-12 px-2 dark:placeholder-white dark:text-white dark:bg-slate-800 bg-dark w-full"
             placeholder="جستجو در بازار"
           />
         </div>

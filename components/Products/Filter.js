@@ -12,7 +12,7 @@ const Filter = () => {
 
   const dispatch = useDispatch();
 
-  const { product } = useSelector((state) => state.product);
+  const {product, theme } = useSelector((state) => state);
 
   const handelShowBrand = () => {
     setshowBrandBtn(!showBrandBtn);
@@ -39,10 +39,10 @@ const Filter = () => {
   }, [showRangeBtn]);
 
   useEffect(() => {
-    if (product && product.length > 0) {
+    if (product.product && product.product.length > 0) {
       dispatch(
         SetFilter(
-          product.filter((item) => brand.includes(item.data_layer.brand))
+          product.product.filter((item) => brand.includes(item.data_layer.brand))
         )
       );
     }
@@ -55,19 +55,23 @@ const Filter = () => {
 
   return (
     <div
-      className="flex bg-white flex-col gap-4 w-full ml-4 rounded-md p-6 text-gray-700
+      className="flex dark:bg-slate-900 dark:text-white bg-white flex-col gap-4 w-full ml-4 rounded-md p-6 text-gray-700
     text-lg"
     >
       <h1 className="text-2xl text-orange-600">دسته بندی</h1>
       <button
-        className="flex gap-2 relative text-gray-400 hover:bg-gray-50 p-1
+        className="flex gap-2 relative text-gray-400 rounded-sm hover:bg-gray-50 dark:hover:bg-slate-600 p-1
         text-base"
         style={{
-          color: IsAll ? "#374151" : "rgb(107,114,128)",
+          color: IsAll
+            ? theme == "dark"
+              ? "white"
+              : "#374151"
+            : "rgb(107,114,128)",
           fontWeight: IsAll ? "bold" : "normal",
         }}
         onClick={() => {
-          dispatch(SetFilter(product.filter((item) => item)));
+          dispatch(SetFilter(product.product.filter((item) => item)));
           setIsMobile(false);
           setIsLaptop(false);
           setIsOther(false);
@@ -88,20 +92,24 @@ const Filter = () => {
             d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
           />
         </svg>
-        <span className="absolute bg-gray-100 w-6 h-6 rounded-full -right-[8px] -top-[8px]"></span>
+        <span className="absolute dark:bg-slate-300 bg-gray-100 w-6 h-6 rounded-full -right-[8px] -top-[8px]"></span>
         همه محصولات
       </button>
       <button
-        className="flex gap-2 relative text-gray-400 hover:bg-gray-50 p-1
+        className="flex gap-2 relative text-gray-400 rounded-sm hover:bg-gray-50 dark:hover:bg-slate-600 p-1
         text-base"
         style={{
-          color: IsMobile ? "#374151" : "rgb(107,114,128)",
+          color: IsMobile
+            ? theme == "dark"
+              ? "white"
+              : "#374151"
+            : "rgb(107,114,128)",
           fontWeight: IsMobile ? "bold" : "normal",
         }}
         onClick={() => {
           dispatch(
             SetFilter(
-              product.filter(
+              product.product.filter(
                 (item) => item.data_layer.category === "گوشی موبایل"
               )
             )
@@ -126,20 +134,24 @@ const Filter = () => {
             d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
           ></path>
         </svg>
-        <span className="absolute bg-gray-100 w-6 h-6 rounded-full -right-[8px] -top-[8px]"></span>
+        <span className="absolute dark:bg-slate-300 bg-gray-100 w-6 h-6 rounded-full -right-[8px] -top-[8px]"></span>
         تلفن همراه
       </button>
       <button
-        className="flex gap-2 relative text-gray-400 hover:bg-gray-50 p-1 
+        className="flex gap-2 relative text-gray-400 rounded-sm hover:bg-gray-50 dark:hover:bg-slate-600 p-1 
     text-base"
         style={{
-          color: IsLaptop ? "#374151" : "rgb(107,114,128)",
+          color: IsLaptop
+            ? theme == "dark"
+              ? "white"
+              : "#374151"
+            : "rgb(107,114,128)",
           fontWeight: IsLaptop ? "bold" : "normal",
         }}
         onClick={() => {
           dispatch(
             SetFilter(
-              product.filter(
+              product.product.filter(
                 (item) => item.data_layer.category === "لپ تاپ و الترابوک"
               )
             )
@@ -164,19 +176,23 @@ const Filter = () => {
             d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
           ></path>
         </svg>
-        <span className="absolute bg-gray-100 w-6 h-6 rounded-full -right-[9px] -top-[9px]"></span>
+        <span className="absolute dark:bg-slate-300 bg-gray-100 w-6 h-6 rounded-full -right-[9px] -top-[9px]"></span>
         لپ تاپ
       </button>
       <button
-        className="flex gap-2 relative text-gray-400 hover:bg-gray-50 p-1 text-base"
+        className="flex gap-2 relative text-gray-400 hover:bg-gray-50 rounded-sm dark:hover:bg-slate-600 p-1 text-base"
         style={{
-          color: IsOther ? "#374151" : "rgb(107,114,128)",
+          color: IsOther
+            ? theme == "dark"
+              ? "white"
+              : "#374151"
+            : "rgb(107,114,128)",
           fontWeight: IsOther ? "bold" : "normal",
         }}
         onClick={() => {
           dispatch(
             SetFilter(
-              product.filter(
+              product.product.filter(
                 (item) =>
                   item.data_layer.category !== "لپ تاپ و الترابوک" &&
                   item.data_layer.category !== "گوشی موبایل"
@@ -205,13 +221,13 @@ const Filter = () => {
             />
           </svg>
         </span>
-        <span className="absolute bg-gray-100 w-6 h-6 rounded-full -right-[7px] -top-[7px]"></span>
+        <span className="absolute dark:bg-slate-300 bg-gray-100 w-6 h-6 rounded-full -right-[7px] -top-[7px]"></span>
         سایر
       </button>
 
       <h1 className="text-2xl text-orange-600 mt-6">فیلتر</h1>
       <button
-        className="flex justify-between text-gray-700 hover:bg-gray-50
+        className="flex justify-between dark:text-white text-gray-700 dark:hover:bg-slate-600 hover:bg-gray-50
          rounded-md pt-2"
         onClick={handelShowBrand}
       >
@@ -230,7 +246,7 @@ const Filter = () => {
               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
             />
           </svg>
-          <span className="absolute bg-gray-100 w-5 h-5 rounded-full -right-[10px] -top-[10px]"></span>
+          <span className="absolute dark:bg-slate-300 bg-gray-100 w-5 h-5 rounded-full -right-[10px] -top-[10px]"></span>
           برند
         </span>
         {showBrandBtn ? (
@@ -307,7 +323,7 @@ const Filter = () => {
         </li>
       </ul>
       <button
-        className="flex justify-between pt-2 text-gray-700 hover:bg-gray-50 rounded-md"
+        className="flex justify-between pt-2 dark:text-white text-gray-700 dark:hover:bg-slate-600 hover:bg-gray-50 rounded-md"
         onClick={handelShowRange}
       >
         <span className="flex gap-2 relative">
@@ -325,7 +341,7 @@ const Filter = () => {
               d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span className="absolute bg-gray-100 w-5 h-5 rounded-full -right-[8px] -top-[8px]"></span>
+          <span className="absolute dark:bg-slate-300 bg-gray-100 w-5 h-5 rounded-full -right-[8px] -top-[8px]"></span>
           محدوده قیمت
         </span>
         {showRangeBtn ? (
@@ -343,20 +359,20 @@ const Filter = () => {
           </svg>
         ) : (
           <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 transition-all duration-500 text-gray-500"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fillRule="evenodd"
-            d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-            clipRule="evenodd"
-          ></path>
-        </svg>
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 transition-all duration-500 text-gray-500"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+              clipRule="evenodd"
+            ></path>
+          </svg>
         )}
       </button>
-      <div style={{ display: displayRange }} className="flex flex-col">
+      <div style={{ display: displayRange }} className="flex flex-col gap-2">
         <PriceRange />
       </div>
     </div>

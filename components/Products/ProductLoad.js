@@ -4,7 +4,7 @@ export const ProductLoad = () => {
   return (
     <>
       <div
-        className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center shadow-gray-700
+        className="flex sm:flex-col gap-8 dark:bg-slate-900 dark:border-slate-700 bg-white cursor-pointer items-center shadow-gray-700
     border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative "
       >
         {/* cartImage */}
@@ -24,7 +24,7 @@ export const ProductLoad = () => {
         </div>
       </div>
       <div
-        className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center shadow-gray-700
+        className="flex sm:flex-col gap-8 dark:bg-slate-900 dark:border-slate-700 bg-white cursor-pointer items-center shadow-gray-700
     border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative "
       >
         {/* cartImage */}
@@ -44,7 +44,7 @@ export const ProductLoad = () => {
         </div>
       </div>
       <div
-        className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center shadow-gray-700
+        className="flex sm:flex-col gap-8 dark:bg-slate-900 dark:border-slate-700 bg-white cursor-pointer items-center shadow-gray-700
     border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative "
       >
         {/* cartImage */}
@@ -64,7 +64,7 @@ export const ProductLoad = () => {
         </div>
       </div>
       <div
-        className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center shadow-gray-700
+        className="flex sm:flex-col gap-8 dark:bg-slate-900 dark:border-slate-700 bg-white cursor-pointer items-center shadow-gray-700
     border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative "
       >
         {/* cartImage */}
@@ -84,7 +84,7 @@ export const ProductLoad = () => {
         </div>
       </div>
       <div
-        className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center shadow-gray-700
+        className="flex sm:flex-col gap-8 dark:bg-slate-900 dark:border-slate-700 bg-white cursor-pointer items-center shadow-gray-700
     border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative "
       >
         {/* cartImage */}
@@ -104,7 +104,7 @@ export const ProductLoad = () => {
         </div>
       </div>
       <div
-        className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center shadow-gray-700
+        className="flex sm:flex-col gap-8 dark:bg-slate-900 dark:border-slate-700 bg-white cursor-pointer items-center shadow-gray-700
     border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative "
       >
         {/* cartImage */}
@@ -124,7 +124,7 @@ export const ProductLoad = () => {
         </div>
       </div>
       <div
-        className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center shadow-gray-700
+        className="flex sm:flex-col gap-8 dark:bg-slate-900 dark:border-slate-700 bg-white cursor-pointer items-center shadow-gray-700
     border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative "
       >
         {/* cartImage */}
@@ -144,7 +144,7 @@ export const ProductLoad = () => {
         </div>
       </div>
       <div
-        className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center shadow-gray-700
+        className="flex sm:flex-col gap-8 dark:bg-slate-900 dark:border-slate-700 bg-white cursor-pointer items-center shadow-gray-700
     border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative "
       >
         {/* cartImage */}

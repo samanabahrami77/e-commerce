@@ -38,7 +38,7 @@ const Product = () => {
     <div className="mt-4">
       {data ? (
         <div className="flex flex-col px-8 gap-4">
-          <div className="flex text-gray-500 text-sm gap-2 bg-white p-4 rounded-md">
+          <div className="flex text-gray-500 text-sm gap-2 dark:bg-slate-900 dark:text-white bg-white p-4 rounded-md">
             <Link href={"/"} passHref>
               <button className="text-orange-500">فروشگاه</button>
             </Link>
@@ -64,7 +64,7 @@ const Product = () => {
           </div>
           <div className="flex w-full gap-4 mb-8 md:flex-nowrap flex-wrap">
             <div className="flex flex-col md:w-2/3 w-full gap-4">
-              <div className="flex bg-white p-4 rounded-md gap-2">
+              <div className="flex dark:bg-slate-900 dark:text-white dark:border dark:border-slate-700 bg-white p-4 rounded-md gap-6">
                 <div className="flex flex-col w-1/3">
                   <span className="md:max-w-[24vw]">
                     <Image
@@ -141,7 +141,7 @@ const Product = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex bg-white p-4 md:text-base text-sm">
+              <div className="flex dark:bg-slate-900 dark:text-white bg-white p-4 md:text-base text-sm">
                 <div className="flex flex-col w-full gap-4">
                   <h3 className="border-b-2 max-w-fit border-red-600 mb-6">
                     تجربه های خریداران
@@ -243,7 +243,7 @@ const Product = () => {
               </div>
             </div>
             {/* add to cart section */}
-            <div className="flex flex-col md:w-1/3 w-full h-fit bg-white rounded sticky top-36 p-6 mb-10">
+            <div className="flex flex-col md:w-1/3 w-full h-fit dark:bg-slate-900 dark:text-white dark:border dark:border-slate-700 bg-white rounded sticky top-36 p-6 mb-10">
               <div className="flex flex-col gap-4">
                 <div className="flex items-center">
                   <span className="w-10 h-10">

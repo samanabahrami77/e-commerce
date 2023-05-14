@@ -65,7 +65,7 @@ export const Layout = ({ children }) => {
   const handelShow = () => setIsShow(!IsShow);
 
   return (
-    <div dir="rtl" className="bg-gray-100">
+    <div dir="rtl" className="bg-gray-100 dark:bg-slate-900">
       <Navbar />
       {massege.status === "error" && IsShow && (
         <Toast

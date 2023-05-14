@@ -13,17 +13,17 @@ const Input = ({ data, jsx, aLink, label, value, onChange }) => {
     <>
       <label
         htmlFor={data}
-        className="flex flex-col text-gray-600 text-sm gap-2"
+        className="flex flex-col text-gray-600 dark:text-white text-sm gap-2"
       >
         <div className="flex justify-between">
           {label ? label : data} {aLink}
         </div>
         <div
-          className="bg-dark border flex flex-row p-2 text-base rounded-md 
+          className="bg-dark dark:bg-slate-800 dark:border-none border flex flex-row p-2 text-base rounded-md 
           hover:border-blue-500"
         >
           <input
-            className="flex-1 outline-none bg-gray-100 border-0"
+            className="flex-1 outline-none dark:bg-slate-800 dark:text-white bg-gray-100 border-0"
             type={data === "password" ? (IshowPasword ? "text" : data) : data}
             id={data}
             value={value}

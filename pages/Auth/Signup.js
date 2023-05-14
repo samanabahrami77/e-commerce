@@ -43,18 +43,18 @@ export default function Signup() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <main
-        className="bg-dark min-h-screen flex flex-col justify-center items-center gap-8"
+        className="bg-dark dark:bg-slate-900 dark:twxt-white min-h-screen flex flex-col justify-center items-center gap-8"
         dir="rtl"
       >
         <Link href={"/"} passHref>
-          <h1 className="text-2xl cursor-pointer ">فروشگاه</h1>
+          <h1 className="text-2xl cursor-pointer dark:text-white">فروشگاه</h1>
         </Link>
 
-        <div className="bg-white shadow-sm rounded-2xl py-6 px-12 flex flex-col md:m-0 mx-4 w-full md:w-[32rem] gap-4">
-          <h1 className="md:text-2xl text-lg text-center text-gray-500">ثبت نام</h1>
+        <div className="bg-white dark:bg-slate-900 dark:text-white dark:border-slate-700 dark:border shadow-sm rounded-2xl py-6 px-12 flex flex-col md:m-0 mx-4 w-full md:w-[32rem] gap-4">
+          <h1 className="md:text-2xl text-lg text-center text-gray-500 dark:text-white">ثبت نام</h1>
           <ImageButton src={google} value="ثبت نام با گوگل" />
           <div className="relative flex justify-center">
-            <h3 className="text-xs text-gray-500 z-10 relative bg-white px-3">
+            <h3 className="text-xs text-gray-500 z-10 relative dark:bg-slate-900 bg-white px-3">
               یا ثبت نام با
             </h3>
             <i className="absolute top-1/2 transform -translate-y-1/2 z-0 right-0 w-full flex border-t border-gray-500 border-opacity-30"></i>
@@ -93,7 +93,7 @@ export default function Signup() {
               }
             />
             <Input
-              data="re-password"
+              data="password"
               value={re_password}
               onChange={(e) => setRe_password(e.target.value)}
               label={" تکرار پسورد"}

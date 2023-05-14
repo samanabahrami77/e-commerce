@@ -12,10 +12,10 @@ import twitter from "./../../images/twitter.png";
 
 export const Footer = () => {
   return (
-    <div className="flex flex-col h-50 p-6 gap-12 md:mx-14 bg-white md:rounded-md">
+    <div className="flex flex-col h-50 p-6 gap-12 md:mx-14 dark:border dark:border-slate-700 dark:bg-slate-900 bg-white md:rounded-md">
       {/* top footer */}
       <div className="flex flex-wrap justify-between md:mx-10 md:gap-0 gap-2">
-        <div className="flex flex-col items-center text-xs text-gray-700 gap-2">
+        <div className="flex flex-col items-center text-xs dark:text-white text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
             <Image
               src={originalProducts}
@@ -27,7 +27,7 @@ export const Footer = () => {
           </span>
           <span>ضمانت اصل بودن کالا</span>
         </div>
-        <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
+        <div className="flex flex-col items-center  text-xs dark:text-white text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
             <Image
               src={daysReturn}
@@ -39,7 +39,7 @@ export const Footer = () => {
           </span>
           <span> ضمانت بازگشت کالا</span>
         </div>
-        <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
+        <div className="flex flex-col items-center  text-xs dark:text-white text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
             <Image
               src={support}
@@ -51,7 +51,7 @@ export const Footer = () => {
           </span>
           <span>پشتیبانی ۲۴ ﺳﺎﻋﺘﻪ</span>
         </div>
-        <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
+        <div className="flex flex-col items-center  text-xs dark:text-white text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
             <Image
               src={cashOnDelivery}
@@ -63,7 +63,7 @@ export const Footer = () => {
           </span>
           <span>امکان پرداخت در محل</span>
         </div>
-        <div className="flex flex-col items-center  text-xs text-gray-700 gap-2">
+        <div className="flex flex-col items-center  text-xs dark:text-white text-gray-700 gap-2">
           <span className="md:w-16 w-12 h-12 md:h-16">
             <Image
               src={expressDelivery}
@@ -76,10 +76,10 @@ export const Footer = () => {
         </div>
       </div>
       {/* bottom footer */}
-      <div className="flex text-gray-800 flex-wrap justify-between">
+      <div className="flex dark:text-white text-gray-800 flex-wrap justify-between">
         <div className="flex flex-col ">
           <h3 className="text-lg mb-4">با فروشگاه</h3>
-          <ul className="text-gray-500">
+          <ul className="dark:text-white text-gray-500">
             <li className="py-2">اتاق خبر فروشگاه</li>
             <li className="py-2">فروش در فروشگاه</li>
             <li className="py-2">فرصت های شغلی </li>
@@ -89,7 +89,7 @@ export const Footer = () => {
         </div>
         <div className="flex flex-col ">
           <h3 className="text-lg mb-4">خدمات مشتریان</h3>
-          <ul className="text-gray-500 text-base">
+          <ul className="dark:text-white text-gray-500 text-base">
             <li className="py-2">پاسخ به پرسش های متداول</li>
             <li className="py-2">رویه های بازگرداندن کالا</li>
             <li className="py-2">شرایط استفاده</li>
@@ -99,7 +99,7 @@ export const Footer = () => {
         </div>
         <div className="flex flex-col ">
           <h3 className="text-lg mb-4">راهنمای خرید از فروشگاه</h3>
-          <ul className="text-gray-500 text-base">
+          <ul className="dark:text-white text-gray-500 text-base">
             <li className="py-2">نحوه ثبت سفارش</li>
             <li className="py-2">رویه ارسال سفارش</li>
             <li className="py-2">شیوه های پرداخت</li>
@@ -146,7 +146,7 @@ export const Footer = () => {
             <div className="flex gap-2">
               <input
                 type="email"
-                className="outline-none p-3 w-3/4  rounded-md bg-gray-100 text-sm"
+                className="outline-none p-3 w-3/4  rounded-md dark:bg-slate-800 dark:placeholder-white bg-gray-100 text-sm"
                 placeholder="ایمیل شما"
               />
               <button className="bg-orange-400 rounded-md p-4 w-1/4 text-sm text-white">
@@ -156,7 +156,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="text-center text-sm text-gray-600">
+      <div className="text-center text-sm dark:text-white text-gray-600">
         <hr className="pb-6" />
         <span>همه‌ حقوق برای «فروشگاه» است. © 1401</span>
       </div>

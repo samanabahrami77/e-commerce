@@ -34,8 +34,8 @@ export const ProductItem = ({ product }) => {
       <Link href={`./product/${product.id}`} passHref>
         <div
           key={product.id}
-          className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center shadow-gray-700
-                  border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative "
+          className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center dark:text-white dark:bg-slate-900 shadow-gray-700
+                dark:border-slate-700  border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative dark:shadow-slate-700 "
         >
           {/* cartImage */}
           <div className="sm:w-4/5 w-1/3 mr-4">
@@ -65,7 +65,7 @@ export const ProductItem = ({ product }) => {
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <span>{(product.rating.rate * 5) / 100}</span>
-              <span className="mx-2 text-gray-600 text-sm">
+              <span className="mx-2 text-gray-600 dark:text-white text-sm">
                 ({product.rating.count} نظر)
               </span>
             </div>
@@ -91,7 +91,7 @@ export const ProductItem = ({ product }) => {
                   />
                 </svg>
               </button>
-              <span className="text-gray-600">
+              <span className="text-gray-600 dark:text-white">
                 {PersianNumber(product.price)} تومان
               </span>
             </div>

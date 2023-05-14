@@ -1,5 +1,6 @@
 module.exports = {
   mode: "jit",
+  darkMode:'class',
   content: ["./components/**/*.{html,js}", "./pages/**/*.{html,js}"],
   theme: {
     extend: {

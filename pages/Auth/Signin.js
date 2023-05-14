@@ -44,19 +44,19 @@ export default function Signin() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <main
-        className="bg-dark min-h-screen  flex flex-col gap-8 justify-center
+        className="bg-dark dark:bg-slate-900 dark:text-white min-h-screen  flex flex-col gap-8 justify-center
         items-center md:text-base text-sm"
       >
         <Link href={"/"} passHref>
           <h1 className="text-2xl cursor-pointer">فروشگاه</h1>
         </Link>
-        <div className="bg-white shadow-sm rounded-2xl py-6 px-12 flex flex-col w-11/12 md:w-[32rem] gap-4">
-          <h1 className="md:text-2xl text-lg text-center text-gray-500">
+        <div className="bg-white dark:bg-slate-900 dark:text-white dark:border dark:border-slate-700 shadow-sm rounded-2xl py-6 px-12 flex flex-col w-11/12 md:w-[32rem] gap-4">
+          <h1 className="md:text-2xl text-lg text-center text-gray-500 dark:text-white">
             ورود
           </h1>
           <ImageButton src={google} value="ورود با گوگل" />
           <div className="relative flex justify-center">
-            <h3 className="text-xs text-gray-400 z-10 relative  bg-white px-3">
+            <h3 className="text-xs text-gray-400 z-10 relative dark:bg-slate-900  bg-white px-3">
               یا ورود به حساب با
             </h3>
             <i className="absolute top-1/2 transform -translate-y-1/2 z-0 right-0 w-full flex border-t border-gray-500 border-opacity-30"></i>
@@ -64,15 +64,15 @@ export default function Signin() {
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             <label
               htmlFor={"email"}
-              className="flex flex-col text-gray-600 text-sm gap-2"
+              className="flex flex-col text-gray-600 dark:text-white text-sm gap-2"
             >
               <div className="flex justify-between">ایمیل</div>
               <div
-                className="bg-dark border flex flex-row p-2 text-base rounded-md 
+                className="bg-dark dark:bg-slate-800 dark:text-white dark:border-none border flex flex-row p-2 text-base rounded-md 
           hover:border-blue-500"
               >
                 <input
-                  className="flex-1 outline-none bg-gray-100 border-0"
+                  className="flex-1 outline-none bg-gray-100 dark:bg-slate-800 dark:text-white border-0"
                   type="email"
                   id="email"
                   value={email}
@@ -83,20 +83,20 @@ export default function Signin() {
             </label>
             <label
               htmlFor={"password"}
-              className="flex flex-col text-gray-600 text-sm gap-2"
+              className="flex flex-col text-gray-600 dark:text-white text-sm gap-2"
             >
               <div className="flex justify-between">
                 پسورد{" "}
-                <a href="" className="text-blue-500">
+                {/* <a href="" className="text-blue-500">
                   فراموش کرده اید؟
-                </a>
+                </a> */}
               </div>
               <div
-                className="bg-dark border flex flex-row p-2 text-base rounded-md 
+                className="bg-dark dark:bg-slate-800 dark:border-none dark:text-white border flex flex-row p-2 text-base rounded-md 
           hover:border-blue-500"
               >
                 <input
-                  className="flex-1 outline-none bg-gray-100 border-0"
+                  className="flex-1 outline-none bg-gray-100 dark:bg-slate-800 dark:text-white border-0"
                   type={IshowPasword ? "password" : "text"}
                   id="password"
                   value={password}
@@ -146,12 +146,12 @@ export default function Signin() {
             </label>
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-white p-2 rounded-md text-white hover:border-blue-600 border hover:text-blue-600"
+              className="bg-blue-500 dark:bg-sky-500 dark:hover:bg-sky-400 dark:hover:text-white dark:border-none hover:bg-white p-2 rounded-md text-white hover:border-blue-600 border hover:text-blue-600"
             >
               ورود
             </button>
           </form>
-          <div className="text-center mt-6 text-gray-700">
+          <div className="text-center mt-6 text-gray-700 dark:text-white">
             آیا قبلا ثبت نام کرده اید؟
             <Link href={"/Auth/Signup"} passHref>
               <a className="text-blue-500">ثبت نام</a>

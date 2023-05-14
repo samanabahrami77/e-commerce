@@ -3,7 +3,7 @@ import { ProductItem } from "./ProductItem";
 import Filter from "./Filter";
 import { ProductLoad } from "./ProductLoad";
 
-export const Products = ({ product }) => {
+export const Products = ({ product, theme }) => {
   const [mostvisited, setmostvisited] = useState(true);
   const [cheapest, setcheapest] = useState(false);
   const [mostexpensive, setmostexpensive] = useState(false);
@@ -41,13 +41,13 @@ export const Products = ({ product }) => {
   }, [mostexpensive, mostpopular, mostvisited, cheapest, product]);
 
   return (
-    <div className="flex justify-center md:p-14 p-2 bg-gray-100">
+    <div className="flex justify-center md:p-14 p-2 bg-gray-100 dark:bg-slate-800">
       <div className="xl:flex hidden w-full xl:w-1/4 h-fit xl:sticky xl:top-24">
         <Filter product={product} />
       </div>
       <div className="flex flex-col w-full xl:w-3/4 gap-4">
-        <div className="flex gap-3 text-gray-500 bg-white rounded p-3 items-center">
-          <span className="bg-orange-100 p-1 rounded">
+        <div className="flex gap-3 dark:bg-slate-900 dark:text-white text-gray-500 bg-white rounded p-3 items-center">
+          <span className="bg-orange-100 dark:bg-slate-700 p-1 rounded ">
             <svg
               direction={"rtl"}
               xmlns="http://www.w3.org/2000/svg"
@@ -66,9 +66,13 @@ export const Products = ({ product }) => {
           </span>
           <div className="flex gap-6 mr-2 text-gray-500">
             <button
-              className="relative "
+              className="relative"
               style={{
-                color: mostvisited ? "#374151" : "rgb(107,114,128)",
+                color: mostvisited
+                  ? theme == "dark"
+                    ? "white"
+                    : "#374151"
+                  : "rgb(107,114,128)",
                 fontWeight: mostvisited ? "bold" : "normal",
               }}
               onClick={() => {
@@ -88,7 +92,11 @@ export const Products = ({ product }) => {
             <button
               className="relative "
               style={{
-                color: cheapest ? "#374151" : "rgb(107,114,128)",
+                color: cheapest
+                  ? theme == "dark"
+                    ? "white"
+                    : "#374151"
+                  : "rgb(107,114,128)",
                 fontWeight: cheapest ? "bold" : "normal",
               }}
               onClick={() => {
@@ -108,7 +116,11 @@ export const Products = ({ product }) => {
             <button
               className="relative "
               style={{
-                color: mostexpensive ? "#374151" : "rgb(107,114,128)",
+                color: mostexpensive
+                  ? theme == "dark"
+                    ? "white"
+                    : "#374151"
+                  : "rgb(107,114,128)",
                 fontWeight: mostexpensive ? "bold" : "normal",
               }}
               onClick={() => {
@@ -128,7 +140,11 @@ export const Products = ({ product }) => {
             <button
               className="relative "
               style={{
-                color: mostpopular ? "#374151" : "rgb(107,114,128)",
+                color: mostpopular
+                  ? theme == "dark"
+                    ? "white"
+                    : "#374151"
+                  : "rgb(107,114,128)",
                 fontWeight: mostpopular ? "bold" : "normal",
               }}
               onClick={() => {

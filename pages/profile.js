@@ -16,11 +16,11 @@ const Profile = () => {
 
   return (
     <div className="flex mx-14 my-10">
-      <div className="flex flex-col w-1/4 bg-white rounded">
+      <div className="flex flex-col w-1/4 bg-white rounded dark:bg-gray-600 dark:text-white">
         <span>مشخصات</span>
         <div>
           <span>ایمیل : </span>
-        <span>{user.email}</span>
+          <span>{user.email}</span>
         </div>
         <button
           className="bg-red-500 py-3 text-white rounded"

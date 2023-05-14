@@ -16,7 +16,7 @@ export const CartItem = ({ product, cartProduct, dispatch }) => {
 
   return (
     <div
-      className="flex md:text-base text-xs justify-between bg-white rounded-md shadow-md p-4"
+      className="flex md:text-base text-xs justify-between dark:bg-slate-900 dark:border-slate-500 dark:border bg-white rounded-md shadow-md p-4"
       key={product.id}
     >
       <div className="flex gap-2">
@@ -69,7 +69,7 @@ export const CartItem = ({ product, cartProduct, dispatch }) => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 bg-gray-100 rounded-full"
+              className="h-6 w-6 bg-gray-100 dark:bg-slate-700 rounded-full"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -93,7 +93,7 @@ export const CartItem = ({ product, cartProduct, dispatch }) => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 bg-red-100 rounded-full"
+              className="h-6 w-6 bg-red-100 dark:bg-slate-700 rounded-full"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
