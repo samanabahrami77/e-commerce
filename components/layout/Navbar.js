@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  ClearSearch,
-  SetFilter,
-  SetTheme,
-} from "../../Store/Actions";
+import { ClearSearch, SetFilter, SetTheme } from "../../Store/Actions";
 
 export const Navbar = () => {
   const { cart, theme, user, product } = useSelector((state) => state);
@@ -90,7 +86,7 @@ export const Navbar = () => {
         );
       dispatch(SetTheme(themepage));
     }
-  }, [themeListShow]);
+  }, [themeListShow, themepage]);
 
   useEffect(() => {
     setuserName(user.email ? user.email.split("@")[0] : "");
@@ -115,6 +111,33 @@ export const Navbar = () => {
     }
   }, [searchValue]);
 
+  useEffect(() => {
+    switch (theme) {
+      case "dark":
+        document
+          .getElementsByTagName("html")
+          .item(0)
+          .setAttribute("class", "dark");
+        break;
+      case "system":
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document
+            .getElementsByTagName("html")
+            .item(0)
+            .setAttribute("class", "dark");
+        } else {
+          document
+            .getElementsByTagName("html")
+            .item(0)
+            .removeAttribute("class");
+        }
+        break;
+      default:
+        document.getElementsByTagName("html").item(0).removeAttribute("class");
+        break;
+    }
+  }, [theme]);
+
   return (
     <>
       <div className="flex flex-col shadow-md border-b sticky dark:border-slate-700 dark:bg-slate-900 dark:text-white bg-white top-0 z-20">
@@ -136,7 +159,9 @@ export const Navbar = () => {
               </svg>
               <div className="flex flex-col items-center">
                 <h1 className="font-bold text-base text-orange-500">فروشگاه</h1>
-                <h3 className="text-xs text-gray-500 dark:text-white">market</h3>
+                <h3 className="text-xs text-gray-500 dark:text-white">
+                  market
+                </h3>
               </div>
             </div>
           </Link>

@@ -9,6 +9,7 @@ import { ImageButton } from "../../components/Tools/ImageButton";
 import google from "../../images/google.png";
 import { Auth, Notify } from "../../Store/Actions";
 import { validate } from "../../utils/validate";
+import Input from "../../components/Tools/Input";
 
 export default function Signin() {
   const [email, setemail] = useState("");
@@ -81,7 +82,7 @@ export default function Signin() {
                 />
               </div>
             </label>
-            <label
+            {/* <label
               htmlFor={"password"}
               className="flex flex-col text-gray-600 dark:text-white text-sm gap-2"
             >
@@ -89,7 +90,7 @@ export default function Signin() {
                 پسورد{" "}
                 {/* <a href="" className="text-blue-500">
                   فراموش کرده اید؟
-                </a> */}
+                </a>
               </div>
               <div
                 className="bg-dark dark:bg-slate-800 dark:border-none dark:text-white border flex flex-row p-2 text-base rounded-md 
@@ -143,7 +144,33 @@ export default function Signin() {
                   )}
                 </button>
               </div>
-            </label>
+            </label> */}
+            <Input
+                  data="password"
+                  label={"پسورد"}
+                  value={password}
+                  onChange={(e) => setpassword(e.target.value)}
+                  jsx={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="stroke-gray-400 h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  }
+                />
             <button
               type="submit"
               className="bg-blue-500 dark:bg-sky-500 dark:hover:bg-sky-400 dark:hover:text-white dark:border-none hover:bg-white p-2 rounded-md text-white hover:border-blue-600 border hover:text-blue-600"
