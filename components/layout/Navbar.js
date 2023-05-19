@@ -81,7 +81,11 @@ export const Navbar = () => {
         .querySelectorAll(".option")
         .forEach((element) =>
           element.addEventListener("click", () =>
-            setthemepage(element.getAttribute("value"))
+            element.getAttribute("value") == "system"
+              ? window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? setthemepage("dark")
+                : setthemepage("light")
+              : setthemepage(element.getAttribute("value"))
           )
         );
       dispatch(SetTheme(themepage));
@@ -112,6 +116,12 @@ export const Navbar = () => {
   }, [searchValue]);
 
   useEffect(() => {
+    if (!localStorage.getItem("theme")) {
+      localStorage.setItem("theme", themepage);
+    } else if (localStorage.getItem("theme") !== themepage) {
+      localStorage.setItem("theme", themepage);
+    }
+
     switch (theme) {
       case "dark":
         document
@@ -137,7 +147,6 @@ export const Navbar = () => {
         break;
     }
   }, [theme]);
-
   return (
     <>
       <div className="flex flex-col shadow-md border-b sticky dark:border-slate-700 dark:bg-slate-900 dark:text-white bg-white top-0 z-20">

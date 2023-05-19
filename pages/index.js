@@ -6,13 +6,13 @@ import { Products } from "../components/Products";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { product, filter} = useSelector((state) => state);
+  const { product, filter } = useSelector((state) => state);
   useEffect(() => {
     axios.get("/api/product").then((res) => dispatch(Product(res.data)));
   }, [dispatch]);
   return (
     <div className="bg-gray-100 dark:text-white dark:bg-gray-500">
-      <Products theme={theme} product={filter.length > 0 ? filter : product.product} />
+      <Products product={filter.length > 0 ? filter : product.product} />
     </div>
   );
 }

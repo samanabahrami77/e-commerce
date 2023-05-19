@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { ProductItem } from "./ProductItem";
 import Filter from "./Filter";
 import { ProductLoad } from "./ProductLoad";
+import { useSelector } from "react-redux";
 
-export const Products = ({ product, theme }) => {
+export const Products = ({ product }) => {
   const [mostvisited, setmostvisited] = useState(true);
   const [cheapest, setcheapest] = useState(false);
   const [mostexpensive, setmostexpensive] = useState(false);
   const [mostpopular, setmostpopular] = useState(false);
   const [productItem, setproductItem] = useState([]);
-
+  const { theme } = useSelector((state) => state);
   useEffect(() => {
     if (mostexpensive) {
       return setproductItem(

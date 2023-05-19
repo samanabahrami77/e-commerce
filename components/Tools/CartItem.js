@@ -24,15 +24,14 @@ export const CartItem = ({ product, cartProduct, dispatch }) => {
           <span className="w-[15vw]">
             <Image
               src={product.images.url[0]}
-              width="100%"
-              height="100%"
-              layout="responsive"
+              width="300"
+              height="300"
               alt="product"
               priority
             />
           </span>
         </div>
-        <div className="flex flex-col justify-around">
+        <div className="flex flex-col justify-around w-[550px]">
           <span className="break-words">{product.title_fa}</span>
           <span className="text-orange-500 md:text-lg text-xs">
             {PersianNumber(product.price)} تومان{" "}

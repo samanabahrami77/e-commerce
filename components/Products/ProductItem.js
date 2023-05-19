@@ -35,23 +35,22 @@ export const ProductItem = ({ product }) => {
         <div
           key={product.id}
           className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center dark:text-white dark:bg-slate-900 shadow-gray-700
-                dark:border-slate-700  border md:w-1/3 xl:w-1/4 sm:w-1/2 p-2 hover:shadow-custom text-gray-800 relative dark:shadow-slate-700 "
+                dark:border-slate-700 border p-2 hover:shadow-custom text-gray-800 relative dark:shadow-slate-700 "
         >
           {/* cartImage */}
-          <div className="sm:w-4/5 w-1/3 mr-4">
+          <div className="p-1 ml-[10px]">
             <Image
               src={product.images.url[0]}
-              width="100%"
-              height="100%"
-              layout="responsive"
+              width={300}
+              height={300}
               alt="product"
-              priority
+              className="relative"
             />
           </div>
           {/* bodyCart */}
           <div className="flex flex-col gap-4 sm:w-full w-2/3">
             {/* titleCart */}
-            <div className="text-xs sm:text-sm p-2 h-20 leading-5">
+            <div className="text-xs sm:text-sm p-2 h-20 leading-5 width_300">
               <span>{whiteSpace(product.title_fa)}</span>
             </div>
             {/* rate */}

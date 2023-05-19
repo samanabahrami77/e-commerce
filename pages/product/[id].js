@@ -70,9 +70,8 @@ const Product = () => {
                     <Image
                       priority
                       src={data.images.url[0]}
-                      width="100%"
-                      height="100%"
-                      layout="responsive"
+                      width="300"
+                      height="300"
                       alt="product"
                     />
                   </span>
@@ -307,9 +306,8 @@ const Product = () => {
                   <span className="w-5 h-5 mr-6">
                     <Image
                       src={truck}
-                      width="100%"
-                      height="100%"
-                      layout="responsive"
+                      width="300"
+                      height="300"
                       alt="truck"
                     />
                   </span>

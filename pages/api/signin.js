@@ -1,7 +1,6 @@
 import users from "../../utils/models/user";
 import ConnectDB from "../../utils/mongodb";
 import bcrypt from "bcrypt";
-
 ConnectDB();
 
 export default async function signin(req, res) {
@@ -13,7 +12,12 @@ export default async function signin(req, res) {
     );
     if (IsCorrectingPassword) {
       const { email, password, createdAt, updatedAt } = findUser;
-      return res.status(200).json({ email, password, createdAt, updatedAt });
+      return res.status(200).json({
+        email,
+        password,
+        createdAt,
+        updatedAt,
+      });
     }
   }
   return res.json({ status: "error" });

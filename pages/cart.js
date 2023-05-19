@@ -79,10 +79,12 @@ const Cart = () => {
           <button className="bg-orange-500 text-white py-2 rounded-md">
             ادامه فرایند خرید
           </button>
-          <Link href={"/"} passHref>
-            <button className="text-orange-500 border-orange-600 border-2 py-2 rounded-md">
-              انصراف از خرید
-            </button>
+          <Link
+            className="text-orange-500 border-orange-600 border-2 py-2 text-center rounded-md"
+            href={"/"}
+            passHref
+          >
+            <button>انصراف از خرید</button>
           </Link>
         </div>
       </div>
