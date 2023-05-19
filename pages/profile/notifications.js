@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ProfileNav from "../../components/Tools/ProfileNav";
 
-const notifications = () => {
+const Notifications = () => {
   const [email, setEmail] = useState(
     typeof window !== "undefined" ? localStorage.getItem("email") : ""
   );
@@ -15,4 +15,4 @@ const notifications = () => {
   );
 };
 
-export default notifications;
+export default Notifications;

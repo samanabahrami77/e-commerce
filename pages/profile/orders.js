@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProfileNav from "../../components/Tools/ProfileNav";
 import { CartItem } from "../../components/Tools/CartItem";
 
-const orders = () => {
+const Orders = () => {
   const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -27,4 +27,4 @@ const orders = () => {
   );
 };
 
-export default orders;
+export default Orders;

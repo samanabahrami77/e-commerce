@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ProfileNav from "../../components/Tools/ProfileNav";
 
-const orders = () => {
+const Settings = () => {
   const [email, setEmail] = useState(
     typeof window !== "undefined" ? localStorage.getItem("email") : ""
   );
@@ -21,4 +21,4 @@ const orders = () => {
   );
 };
 
-export default orders;
+export default Settings;
