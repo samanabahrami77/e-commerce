@@ -249,7 +249,7 @@ export const Navbar = () => {
                 <button className="md:hidden flex items-center gap-3 text-xs rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-gray-600 dark:text-white"
+                    className="h-8 w-8 text-gray-600 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -268,7 +268,7 @@ export const Navbar = () => {
                 <button className="md:hidden flex items-center gap-3 text-xs rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-gray-600 dark:text-white"
+                    className="h-8 w-8 text-gray-600 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

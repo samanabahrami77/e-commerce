@@ -1392,7 +1392,7 @@ input[type="range"]::-webkit-slider-thumb {
   }
 }
 
-@media (min-width: 300px) and (max-width: 640px) {
+@media (min-width: 300px) and (max-width: 680px) {
   .custom\:flex-col {
     flex-direction: column;
   }

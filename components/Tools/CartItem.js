@@ -16,7 +16,7 @@ export const CartItem = ({ product, cartProduct, dispatch }) => {
 
   return (
     <div
-      className="flex md:text-base text-xs justify-between dark:bg-slate-900 dark:border-slate-500 dark:border bg-white rounded-md shadow-md p-4"
+      className="flex md:text-base text-xs justify-between dark:bg-slate-900 dark:border-slate-500 dark:border bg-white rounded-md shadow-md p-2"
       key={product.id}
     >
       <div className="flex gap-2">
@@ -31,7 +31,7 @@ export const CartItem = ({ product, cartProduct, dispatch }) => {
             />
           </span>
         </div>
-        <div className="flex flex-col justify-around w-[550px]">
+        <div className="flex flex-col justify-around w-[60vw] sm:w-[25vw] mr-4">
           <span className="break-words">{product.title_fa}</span>
           <span className="text-orange-500 md:text-lg text-xs">
             {PersianNumber(product.price)} تومان{" "}

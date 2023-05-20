@@ -6,9 +6,9 @@ const Settings = () => {
     typeof window !== "undefined" ? localStorage.getItem("email") : ""
   );
   return (
-    <div className="flex mx-52 my-10 justify-around">
+    <div className="sm:flex-row flex-col md:mx-52 m-0 my-10 sm:justify-around sm:p-0 p-3 sm:gap-0 gap-2">
       <ProfileNav />
-      <div className="flex-col rounded dark:text-white text-gray-500 bg-white dark:bg-slate-600 h-80 w-8/12 justify-center items-center gap-8">
+      <div className="flex-col rounded dark:text-white text-gray-500 bg-white dark:bg-slate-600 h-80 sm:w-8/12 justify-center items-center gap-8">
         <span>
           نام کاربری :{" "}
           <span className="dark:text-white text-gray-800">{email.split("@")[0]}</span>

@@ -46,7 +46,7 @@ const ProfileNav = () => {
   }, [router.pathname]);
 
   return (
-    <div className="flex-col text-gray-600 bg-white rounded dark:bg-slate-600 dark:text-white p-4 h-[50vh] w-3/12 gap-4">
+    <div className="flex-col text-gray-600 bg-white rounded dark:bg-slate-600 dark:text-white p-4 sm:w-3/12 gap-4">
       <div className="flex items-center gap-2 pb-6">
         <svg
           xmlns="http://www.w3.org/2000/svg"

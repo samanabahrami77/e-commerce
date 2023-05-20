@@ -38,7 +38,7 @@ export const ProductItem = ({ product }) => {
                 dark:border-slate-700 border p-2 hover:shadow-custom text-gray-800 relative dark:shadow-slate-700 "
         >
           {/* cartImage */}
-          <div className="p-1 ml-[10px]">
+          <div className="p-1 mr-3">
             <Image
               src={product.images.url[0]}
               width={300}
