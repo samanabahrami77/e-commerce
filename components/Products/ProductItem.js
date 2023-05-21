@@ -31,14 +31,14 @@ export const ProductItem = ({ product }) => {
 
   return (
     <>
-      <Link href={`./product/${product.id}`} passHref>
+      <Link href={`./product/${product.id}`} className="sm:w-1/2 md:w-1/3 lg:w-1/4" passHref>
         <div
           key={product.id}
           className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center dark:text-white dark:bg-slate-900 shadow-gray-700
                 dark:border-slate-700 border p-2 hover:shadow-custom text-gray-800 relative dark:shadow-slate-700 "
         >
           {/* cartImage */}
-          <div className="px-4">
+          <div className="sm:ml-4 mr-4">
             <Image
               src={product.images.url[0]}
               width={300}
@@ -50,7 +50,7 @@ export const ProductItem = ({ product }) => {
           {/* bodyCart */}
           <div className="flex flex-col gap-4 sm:w-full w-2/3">
             {/* titleCart */}
-            <div className="text-xs sm:text-sm p-2 h-20 leading-5 width_300">
+            <div className="text-xs sm:text-sm p-2 h-20 leading-5">
               <span>{whiteSpace(product.title_fa)}</span>
             </div>
             {/* rate */}

@@ -164,7 +164,7 @@ export const Products = ({ product }) => {
             </button>
           </div>
         </div>
-        <div className="flex custom:flex-col sm:flex-wrap">
+        <div className="flex flex-row custom:flex-col sm:flex-wrap">
           {productItem.length > 0 ? (
             productItem.map((item) => (
               <ProductItem product={item} key={item.id} />
