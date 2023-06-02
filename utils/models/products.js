@@ -6,7 +6,8 @@ const productSchma = new Schema({
   id: {
     type: Number,
   },
-  title: {
+  Quanity: { type: Number, default: 1 },
+  title_fa: {
     type: String,
   },
   data_layer: {
@@ -16,7 +17,10 @@ const productSchma = new Schema({
   images: {
     url: { type: Array },
   },
-  rating: { rate: { type: Number }, count: { type: Number } },
+  rating: {
+    rate: { type: Number, default: 0 },
+    count: { type: Number, default: 0 },
+  },
   price: { type: Number },
   colors: { type: Array },
 });

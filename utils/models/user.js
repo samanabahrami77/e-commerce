@@ -10,8 +10,12 @@ const userSechma = new Schema(
     password: {
       type: String,
     },
+    role: {
+      type: Boolean,
+      default: 0,
+    },
   },
-    { timestamps: true }
+  { timestamps: true }
 );
 
 export default mongoose.models.user || mongoose.model("user", userSechma);

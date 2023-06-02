@@ -57,7 +57,7 @@ export default function Signin() {
             </h3>
             <i className="absolute top-1/2 transform -translate-y-1/2 z-0 right-0 w-full flex border-t border-gray-500 border-opacity-30"></i>
           </div>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6" autoComplete="true">
             <label
               htmlFor={"email"}
               className="flex flex-col text-gray-600 dark:text-white text-sm gap-2"

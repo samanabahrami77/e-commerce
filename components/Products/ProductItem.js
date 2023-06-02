@@ -28,17 +28,20 @@ export const ProductItem = ({ product }) => {
       dispatch(Notify("success", "کالای مورد نظر به سبد خرید افزوده شد"));
     }
   };
-
   return (
     <>
-      <Link href={`./product/${product.id}`} className="sm:w-1/2 md:w-1/3 lg:w-1/4" passHref>
+      <Link
+        href={`./product/${product.id}`}
+        className="sm:w-1/2 md:w-1/3 lg:w-1/4"
+        passHref
+        key={product.id}
+      >
         <div
-          key={product.id}
           className="flex sm:flex-col gap-8 bg-white cursor-pointer items-center dark:text-white dark:bg-slate-900 shadow-gray-700
                 dark:border-slate-700 border p-2 hover:shadow-custom text-gray-800 relative dark:shadow-slate-700 "
         >
           {/* cartImage */}
-          <div className="sm:ml-4 mr-4">
+          <div className="">
             <Image
               src={product.images.url[0]}
               width={300}
@@ -49,6 +52,22 @@ export const ProductItem = ({ product }) => {
           </div>
           {/* bodyCart */}
           <div className="flex flex-col gap-4 sm:w-full w-2/3">
+            <hr className="sm:block hidden" />
+            {/* color */}
+            <div className="flex flex-row justify-between">
+              <span className="text-gray-300 dark:text-white">
+                {product.data_layer.brand}
+              </span>
+              <div className="flex flex-row">
+                {product.colors.map((color) => (
+                  <span
+                    key={color.id}
+                    className="sm:w-8 sm:h-8 w-5 h-5 rounded-full border-2"
+                    style={{ backgroundColor: color.hex_code }}
+                  ></span>
+                ))}
+              </div>
+            </div>
             {/* titleCart */}
             <div className="text-xs sm:text-sm p-2 h-20 leading-5">
               <span>{whiteSpace(product.title_fa)}</span>
@@ -94,16 +113,6 @@ export const ProductItem = ({ product }) => {
                 {PersianNumber(product.price)} تومان
               </span>
             </div>
-          </div>
-          {/* color */}
-          <div className="w-2 h-auto flex flex-col absolute bottom-1 top-4 sm:left-2 gap-2">
-            {product.colors.map((color) => (
-              <span
-                key={color.id}
-                className="w-2 h-2 rounded-full border"
-                style={{ backgroundColor: color.hex_code }}
-              ></span>
-            ))}
           </div>
         </div>
       </Link>

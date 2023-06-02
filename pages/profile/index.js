@@ -37,8 +37,12 @@ const Profile = () => {
           <span className="text-center">۰ تومان</span>
         </div>
         <div className="flex-row justify-center gap-4">
-          <button className="bg-orange-600 text-white py-2 px-6 rounded">افزایش اعتبار</button>
-          <button className="border border-orange-600 dark:text-orange-400 text-orange-600 rounded py-2 px-6">نقد کردن اعتبار</button>
+          <button className="bg-orange-600 text-white py-2 px-6 rounded">
+            افزایش اعتبار
+          </button>
+          <button className="border border-orange-600 dark:text-orange-400 text-orange-600 rounded py-2 px-6">
+            نقد کردن اعتبار
+          </button>
         </div>
       </div>
     </div>
