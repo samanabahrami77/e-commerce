@@ -13,7 +13,8 @@ const Cart = () => {
       cartProduct.reduce((prev, curr) => prev + curr.price * curr.Quanity, 0)
     );
   }, [cartProduct]);
-
+ 
+  
   const dispatch = useDispatch();
 
   return (
