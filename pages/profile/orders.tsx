@@ -1,9 +1,20 @@
+
 import { useDispatch, useSelector } from "react-redux";
 import ProfileNav from "../../components/Tools/ProfileNav";
 import { CartItem } from "../../components/Tools/CartItem";
+import React from "react";
 
-const Orders = () => {
-  const { cart } = useSelector((state) => state);
+interface Product {
+  id: string;
+  // Add other product properties here
+}
+
+interface RootState {
+  cart: Product[];
+}
+
+const Orders: React.FC = () => {
+  const { cart } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
 
   return (

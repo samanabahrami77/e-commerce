@@ -1,9 +1,10 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import products from "../../utils/models/products";
 import ConnectDB from "../../utils/mongodb";
 
 ConnectDB();
 
-export default async function Create(req, res) {
+export default async function Create(req: NextApiRequest, res: NextApiResponse) {
   const date=new Date()
   const { color, link, title, brand, category, price } = req.body;
   const newProduct = new products({
@@ -18,6 +19,6 @@ export default async function Create(req, res) {
     colors: color,
   });
 
-  newProduct.save();
-  return res.json({ success: "loged in !" });
+  await newProduct.save();
+  return res.status(201).json({ success: "product created!" });
 }

@@ -8,17 +8,25 @@ import { ColorProducts } from "../../components/Tools/ColorProducts";
 import PersianNumber from "../../Hooks/PersianNumber";
 import { AddToCart, Notify } from "../../Store/Actions";
 import truck from "./../../images/truck.png";
+import { State } from "../../Store/types";
+import { NextPage } from "next";
 
-interface RootState {
-  cart: any[];
+interface Product {
+  id: string | number;
+  title_fa: string;
+  images: { url: string[] };
+  rating: { rate: number; count: number };
+  price: number;
+  data_layer: { category: string };
+  colors: any[];
 }
 
-const Product = () => {
+const ProductDetail: NextPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [data, setdata] = useState(null);
+  const [data, setdata] = useState<Product | null>(null);
   const { id } = router.query;
-  const cartProduct = useSelector((state: RootState) => state.cart);
+  const cartProduct = useSelector((state: State) => state.cart);
 
   useEffect(() => {
     if (id) {
@@ -29,12 +37,14 @@ const Product = () => {
   }, [id]);
 
   const handleAddToCart = () => {
-    const duble = cartProduct.filter((item) => item.id === data.id);
-    if (duble.length > 0) {
-      dispatch(Notify("error", "کالای مورد نظر در سبد خرید موجود است !"));
-    } else {
-      dispatch(AddToCart(data));
-      dispatch(Notify("success", "کالای مورد نظر به سبد خرید افزوده شد"));
+    if (data) {
+      const duble = cartProduct.filter((item) => item.id === data.id);
+      if (duble.length > 0) {
+        dispatch(Notify("error", "کالای مورد نظر در سبد خرید موجود است !"));
+      } else {
+        dispatch(AddToCart(data));
+        dispatch(Notify("success", "کالای مورد نظر به سبد خرید افزوده شد"));
+      }
     }
   };
 
@@ -309,7 +319,7 @@ const Product = () => {
                   <span className="w-2 h-2 bg-blue-500 rounded-md"></span>
                   <span className="w-5 h-5 mr-6">
                     <Image
-                      src={truck}
+                      src={truck.src}
                       width="300"
                       height="300"
                       alt="truck"
@@ -343,4 +353,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductDetail;

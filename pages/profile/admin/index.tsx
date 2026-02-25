@@ -1,16 +1,26 @@
+
 import { useDispatch, useSelector } from "react-redux";
 import ProfileNav from "../../../components/Tools/ProfileNav";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { DeleteProduct, Notify } from "../../../Store/Actions";
+import { Notify } from "../../../Store/Actions";
 import { useRouter } from "next/router";
 import axios from "axios";
+import React from "react";
+import { State, Product } from "../../../Store/types";
 
-const Index = () => {
-  const { product } = useSelector((state: any) => state);
+const Index: React.FC = () => {
+  const { product } = useSelector((state: State) => state);
   const { push } = useRouter();
   const dispatch = useDispatch();
+
+  const handleDelete = (id: string) => {
+    if (confirm("آیا مطمن به حذف محصول هستید ؟") == true) {
+      axios.post("/api/deleteProduct/", { id });
+      push("/");
+      dispatch(Notify("success", "محصول با موفقیت حذف شد"));
+    }
+  };
 
   return (
     <div className="sm:flex-row flex-col md:mx-52 m-0 my-10 sm:justify-around sm:p-0 p-3 sm:gap-0 gap-2">
@@ -36,21 +46,21 @@ const Index = () => {
           </svg>
           <span>ایجاد محصول جدید</span>
         </Link>
-        {product?.product?.map((prod: any, index: number) => (
+        {Array.isArray(product) && product?.map((prod: Product, index: number) => (
           <div
             className="flex flex-row border w-full p-2 rounded"
             key={prod.id}
           >
             <span className="flex-col justify-center">{index + 1}</span>
             <Image
-              src={prod.images.url[0]}
+              src={prod.image}
               width={100}
               height={100}
-              alt={prod.images.url[0]}
+              alt={prod.image}
               className="pr-4 w-2/12 rounded"
             />
             <span className="flex flex-col justify-center w-9/12 px-6 text-center items-center">
-              {prod.title_fa}
+              {prod.name}
             </span>
             <div className="flex flex-row justify-center w-1/12 gap-2">
               {/* edit button */}
@@ -76,13 +86,7 @@ const Index = () => {
               {/* delete button */}
               <button
                 className="hover:text-red-500"
-                onClick={() => {
-                  if (confirm("آیا مطمن به حذف محصول هستید ؟") == true) {
-                    axios.post("/api/deleteProduct/", { id: prod.id });
-                    push("/");
-                    dispatch(Notify("success", "محصول با موفقیت حذف شد"));
-                  }
-                }}
+                onClick={() => handleDelete(prod.id)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

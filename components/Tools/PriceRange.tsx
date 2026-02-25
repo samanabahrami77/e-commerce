@@ -1,14 +1,14 @@
 import React, { useEffect, useState, FC, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SetFilter } from "../../Store/Actions";
-import { Product, State } from "../../Store/types";
+import { ProductType, State } from "../../types";
 
 export const PriceRange: FC = () => {
   const [minvalue, setMinValue] = useState<number>(0);
   const [maxvalue, setMaxValue] = useState<number>(100000000);
   const minGap = 0;
   const dispatch = useDispatch();
-  const product = useSelector((state: State) => state.product);
+  const products = useSelector((state: State) => state.products);
 
   const handleMinChange = (e: ChangeEvent<HTMLInputElement>) => {
     setMinValue(Number(e.target.value));
@@ -24,11 +24,11 @@ export const PriceRange: FC = () => {
       setMaxValue(minvalue + minGap);
     }
 
-    if (product) {
+    if (products) {
       dispatch(
         SetFilter(
-          product.filter(
-            (item: Product) =>
+          products.filter(
+            (item: ProductType) =>
               item.price / 10 <= maxvalue && item.price / 10 >= minvalue
           )
         )
@@ -41,7 +41,7 @@ export const PriceRange: FC = () => {
       const per2 = (maxvalue / 100000000) * 100;
       sliderTrack.style.background = `linear-gradient(to left, #e0e5e6 ${per1}%,#19bfd3 ${per1}%,#19bfd3 ${per2}%,#e0e5e6 ${per2}%)`;
     }
-  }, [minvalue, maxvalue, product, dispatch, minGap]);
+  }, [minvalue, maxvalue, products, dispatch, minGap]);
 
   return (
     <>
