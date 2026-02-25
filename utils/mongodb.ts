@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
-const ConnectDB = () => {
+const ConnectDB = async () => {
   if (mongoose.connections[0].readyState) {
-    return console.log("already connected.");
+    console.log("already connected.");
+    return;
   }
   mongoose.set('strictQuery', true);
-  mongoose
+  await mongoose
     .connect(
       "mongodb+srv://amir:amir@cluster0.3ursu.mongodb.net/e-commerce?retryWrites=true&w=majority",
       {
@@ -13,8 +14,8 @@ const ConnectDB = () => {
         useUnifiedTopology: true,
       }
     )
-    .then((res) => console.log("connected to mongodb."))
-    .catch((err) => console.log(err));
+    .then((res: any) => console.log("connected to mongodb."))
+    .catch((err: any) => console.log(err));
 };
 
 

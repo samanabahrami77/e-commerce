@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import ProfileNav from "../../components/Tools/ProfileNav";
-import { State } from "../../Store/types";
 import { NextPage } from "next";
+import { State } from "@/types";
 
 const Profile: NextPage = () => {
   const { user } = useSelector((state: State) => state);

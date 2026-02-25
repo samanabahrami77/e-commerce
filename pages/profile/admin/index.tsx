@@ -7,10 +7,10 @@ import { Notify } from "../../../Store/Actions";
 import { useRouter } from "next/router";
 import axios from "axios";
 import React from "react";
-import { State, Product } from "../../../Store/types";
+import { State, ProductType } from "../../../types";
 
 const Index: React.FC = () => {
-  const { product } = useSelector((state: State) => state);
+  const { products } = useSelector((state: State) => state);
   const { push } = useRouter();
   const dispatch = useDispatch();
 
@@ -46,21 +46,21 @@ const Index: React.FC = () => {
           </svg>
           <span>ایجاد محصول جدید</span>
         </Link>
-        {Array.isArray(product) && product?.map((prod: Product, index: number) => (
+        {Array.isArray(products) && products?.map((prod: ProductType, index: number) => (
           <div
             className="flex flex-row border w-full p-2 rounded"
             key={prod.id}
           >
             <span className="flex-col justify-center">{index + 1}</span>
             <Image
-              src={prod.image}
+              src={prod.image.url[0]}
               width={100}
               height={100}
-              alt={prod.image}
+              alt={prod.title_fa}
               className="pr-4 w-2/12 rounded"
             />
             <span className="flex flex-col justify-center w-9/12 px-6 text-center items-center">
-              {prod.name}
+              {prod.title_fa}
             </span>
             <div className="flex flex-row justify-center w-1/12 gap-2">
               {/* edit button */}

@@ -7,7 +7,7 @@ import { State } from "../../types";
 
 export const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [IsShow, setIsShow] = useState(false);
-  const { message } = useSelector((state: State) => state);
+  const { message,status } = useSelector((state: State) => state.message);
 
   const notifyColor = {
     error: { color: "red", bg: "#ffd0d0" },
@@ -46,7 +46,7 @@ export const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   useEffect(() => {
-    if (message.message !== "") {
+    if (message !== "") {
       setIsShow(true);
     }
   }, [message]);
@@ -68,9 +68,9 @@ export const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <div dir="rtl" className="bg-gray-100 dark:bg-slate-900">
       <Navbar />
-      {message.status === "error" && IsShow && (
+      {status === "error" && IsShow && (
         <Toast
-          msg={message.message}
+          msg={message}
           color={notifyColor.error.color}
           bg={notifyColor.error.bg}
           handelShow={handelShow}
@@ -78,9 +78,9 @@ export const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
           svg={svg.error}
         />
       )}
-      {message.status === "success" && IsShow && (
+      {status === "success" && IsShow && (
         <Toast
-          msg={message.message}
+          msg={message}
           color={notifyColor.success.color}
           bg={notifyColor.success.bg}
           handelShow={handelShow}

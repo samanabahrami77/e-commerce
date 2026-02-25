@@ -8,23 +8,13 @@ import { ColorProducts } from "../../components/Tools/ColorProducts";
 import PersianNumber from "../../Hooks/PersianNumber";
 import { AddToCart, Notify } from "../../Store/Actions";
 import truck from "./../../images/truck.png";
-import { State } from "../../Store/types";
+import { State, ProductType } from "../../types";
 import { NextPage } from "next";
-
-interface Product {
-  id: string | number;
-  title_fa: string;
-  images: { url: string[] };
-  rating: { rate: number; count: number };
-  price: number;
-  data_layer: { category: string };
-  colors: any[];
-}
 
 const ProductDetail: NextPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [data, setdata] = useState<Product | null>(null);
+  const [data, setdata] = useState<ProductType | null>(null);
   const { id } = router.query;
   const cartProduct = useSelector((state: State) => state.cart);
 
@@ -42,7 +32,14 @@ const ProductDetail: NextPage = () => {
       if (duble.length > 0) {
         dispatch(Notify("error", "کالای مورد نظر در سبد خرید موجود است !"));
       } else {
-        dispatch(AddToCart(data));
+        const productForCart: ProductType = {
+          ...data,
+          _id: data._id,
+          id: data.id.toString(),
+          Quantity: 1,
+          image: data.image,
+        };
+        dispatch(AddToCart(productForCart));
         dispatch(Notify("success", "کالای مورد نظر به سبد خرید افزوده شد"));
       }
     }
@@ -83,7 +80,7 @@ const ProductDetail: NextPage = () => {
                   <span className="md:max-w-[24vw]">
                     <Image
                       priority
-                      src={data.images.url[0]}
+                      src={data.image.url[0]}
                       width="300"
                       height="300"
                       alt="product"
