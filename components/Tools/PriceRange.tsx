@@ -23,17 +23,18 @@ export const PriceRange: FC = () => {
       setMinValue(maxvalue - minGap);
       setMaxValue(minvalue + minGap);
     }
+console.log(products);
 
-    if (products) {
-      dispatch(
-        SetFilter(
-          products.filter(
-            (item: ProductType) =>
-              item.price / 10 <= maxvalue && item.price / 10 >= minvalue
-          )
-        )
-      );
-    }
+    // if (products) {
+    //   dispatch(
+    //     SetFilter(
+    //       products?.filter(
+    //         (item: ProductType) =>
+    //           item.price / 10 <= maxvalue && item.price / 10 >= minvalue
+    //       )
+    //     )
+    //   );
+    // }
 
     const sliderTrack = document.getElementById("slider-track");
     if (sliderTrack) {

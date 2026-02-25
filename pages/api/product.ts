@@ -2,16 +2,17 @@ import { NextApiRequest, NextApiResponse } from "next";
 import products from "../../utils/models/products";
 import ConnectDB from "../../utils/mongodb";
 
-export default async function getProduct(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== "GET") {
+    return res.status(405).json({ success: false, message: "Method not allowed" });
+  }
+
   try {
     await ConnectDB();
     const product = await products.find({});
-    if (product) {
-      return res.status(200).json({ product });
-    }
-    return res.json({ status: "error" });
+    return res.status(200).json({ success: true, product });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ status: "error", message: "Internal Server Error" });
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 }

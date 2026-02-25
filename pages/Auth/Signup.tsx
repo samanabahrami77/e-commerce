@@ -14,23 +14,46 @@ const Signup: NextPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [re_password, setRe_password] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
+
     if (password !== re_password) {
       dispatch(Notify("error", "تکرار رمز اشتباه است"));
+      setLoading(false);
       return;
     }
-    axios.post("/api/signup", { email, password }).then((res) => {
-      if (res.data.error) {
-        dispatch(Notify("error", "ایمیل وارد شده قبلا ثبت شده !"));
-      } else {
+
+    if (password.length < 6) {
+      dispatch(Notify("error", "رمز عبور باید حداقل ۶ کاراکتر باشد"));
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const res = await axios.post("/api/signup", { email, password });
+
+      if (res.data.success) {
         dispatch(Notify("success", "ثبت نام با موفقیت انجام شد"));
         router.push("/Auth/Signin");
+      } else {
+        dispatch(Notify("error", res.data.message || "خطا در ثبت نام"));
       }
-    });
+    } catch (error: any) {
+      if (error.response?.status === 409) {
+        dispatch(Notify("error", "ایمیل وارد شده قبلا ثبت شده است"));
+      } else if (error.response?.data?.message) {
+        dispatch(Notify("error", error.response.data.message));
+      } else {
+        dispatch(Notify("error", "خطای سرور، لطفا دوباره تلاش کنید"));
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -110,9 +133,10 @@ const Signup: NextPage = () => {
             />
             <button
               type="submit"
-              className="bg-blue-500 dark:bg-sky-500 dark:hover:bg-sky-400 dark:hover:text-white dark:border-none hover:bg-white p-2 rounded-md text-white hover:border-blue-600 border hover:text-blue-600"
+              disabled={loading}
+              className="bg-blue-500 dark:bg-sky-500 dark:hover:bg-sky-400 dark:hover:text-white dark:border-none hover:bg-white p-2 rounded-md text-white hover:border-blue-600 border hover:text-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              ثبت نام
+              {loading ? "در حال ثبت نام..." : "ثبت نام"}
             </button>
           </form>
         </div>

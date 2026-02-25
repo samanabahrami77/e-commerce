@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     axios
       .get("/api/product")
-      .then((res) => dispatch(SetProduct(res.data) as unknown as AnyAction));
+      .then((res) => dispatch(SetProduct(res?.data?.product) as unknown as AnyAction));
   }, [dispatch]);
   return (
     <div className="bg-gray-100 dark:text-white dark:bg-gray-500">
